@@ -1,0 +1,344 @@
+$color-dark: #0B0D17;
+$color-gray: #D0D6F9;
+$color-white: #FFFFFF;
+
+@font-face {
+    font-family: 'Bellefair';
+    src: url('../assets/fonts/Bellefair-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Barlow Condensed';
+    src: url('../assets/fonts/BarlowCondensed-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url('../assets/fonts/Barlow-Regular.ttf');
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: $color-white;
+    font-family: Bellefair;
+    font-weight: 400;
+    font-style: normal;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+h1{
+    font-size: 150px;
+}
+
+h2{
+    font-size: 100px;
+}
+
+h3{
+    font-size: 56px;
+}
+
+h4{
+    font-size: 32px;
+}
+
+h5{
+    color: $color-gray;
+    font-family: 'Barlow Condensed';
+    font-size: 28px;
+    letter-spacing: 4.725px;
+}
+
+h6{
+    color: $color-white;
+    font-family: 'Barlow Condensed';
+    font-size: 28px;
+    letter-spacing: 4.725px;
+}
+
+.bg-home{
+    background: url('../assets/home/background-home-desktop.jpg') no-repeat center center;
+}
+.bg-destination{
+    background: url('../assets/destination/background-destination-desktop.jpg') no-repeat center center;
+}
+.bg-crew{
+    background: url('../assets/crew/background-crew-desktop.jpg') no-repeat center center;
+}
+.bg-technology{
+    background: url('../assets/technology/background-technology-desktop.jpg') no-repeat center center;
+}
+
+body{
+    background: url('../assets/home/background-home-desktop.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.fw-700{
+    font-weight: 700;
+}
+
+header{
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    .header__logo{
+        align-self: center;
+        padding: 0 50px;
+    }
+    .line{
+        width: 473px;
+        height: 1px;
+        background: $color-white;
+        opacity: 0.2515;
+        margin: 32px 0;
+        align-self: center;
+        position: relative;
+        right: -25px;
+        z-index: 1;
+    }
+
+    .header__nav{
+        width: 830px;
+        height: 96px;
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(40.774227142333984px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .tabs-highlighter{
+            width: 72px;
+            height: 3px;
+            background: $color-white;
+            position: absolute;
+            bottom: 0;
+            left: 116px;
+            transition: all 0.3s ease-in-out;
+        }
+        ul{
+            width: 80%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            li{
+                list-style: none;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                a{
+                    color: $color-white;
+                    font-family: 'Barlow Condensed';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: 2.7px;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    span{
+                        margin-right: 12px;
+                    }
+                }
+            
+            }
+        }
+    }
+}
+
+.hidden{
+    display: none!important;
+}
+section.home{
+    margin: 200px auto 110px auto;
+    justify-content: space-between;
+    max-width: 1080px;
+}
+section.destination{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .fw-700{
+        opacity: 0.25;
+        margin-right: 28px;
+    }
+    .container__image{
+        width: 500px;
+        position: relative;
+    }
+    .image__planet{
+        width: 80%;
+        height: 80%;
+        position: absolute;
+        top : 100px;
+        right: 0;
+        align-self: center;
+        background: url('../assets/destination/image-moon.webp') no-repeat center center;
+        background-size: contain;
+    }
+    .Mars{
+        background: url('../assets/destination/image-mars.webp') no-repeat center center;
+        background-size: contain;
+    }
+    .Europa{
+        background: url('../assets/destination/image-europa.webp') no-repeat center center;
+        background-size: contain;
+    }
+    .Titan{
+        background: url('../assets/destination/image-titan.webp') no-repeat center center;
+        background-size: contain;
+    }
+}
+.container{
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1180px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &__content{
+        width: 450px;
+        display: inline-flex;
+        padding-right: 5px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 24px;
+        border: 1px solid #000;
+        p.home-p{
+            color: #D0D6F9;
+            font-family: Barlow;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px;
+        }
+    }
+
+    &__btn{
+        display: flex;
+        justify-content: center;
+        .round-btn{
+            width: 274px;
+            height: 274px;
+            flex-shrink: 0;
+            align-self: flex-end;
+            border-radius: 274px;
+            background: #fff;
+        }
+        
+        .round-btn a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 274px;
+            color: #0B0D17;
+            font-family: Bellefair;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+    }
+
+    &__informations{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 472;
+        margin-top: 90px;
+
+        width: 444px;
+        .line{
+            width: 444px;
+            margin-top: 20px;
+            height: 1px;
+            flex-shrink: 0;
+            background: #383B4B;
+        }
+        nav{
+            position: relative;
+            ul{
+                display: flex;
+                justify-content: space-between;
+                width: 285.5px;
+                height: 34px;
+                flex-shrink: 0;
+                li{
+                    list-style: none;
+                    color: $color-gray;
+                    font-family: 'Barlow Condensed';
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: 2.7px;
+                    cursor: pointer;
+                }
+                .active{
+                    color: $color-white;
+                }
+            }
+            .mini-tabs-highlighter{
+                width: 39px;
+                height: 3px;
+                background: $color-white;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        p{
+            color: #D0D6F9;
+            font-family: Barlow;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px; /* 177.778% */
+        }
+        .informations__travel{
+            display: flex;
+            .informations__travel__item{
+                width: 222px;
+                p{
+                    font-family: 'Barlow Condensed';
+                    font-size: 14px;
+                    letter-spacing: 2.362px;
+                    text-transform: uppercase;
+                }
+                h3{
+                    color: #FFF;
+                    font-family: Bellefair;
+                    font-size: 28px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
