@@ -62,17 +62,17 @@ h6{
     letter-spacing: 4.725px;
 }
 
-.bg-home{
-    background: url('../assets/home/background-home-desktop.jpg') no-repeat center center;
-}
 .bg-destination{
     background: url('../assets/destination/background-destination-desktop.jpg') no-repeat center center;
+    background-size: cover;
 }
 .bg-crew{
     background: url('../assets/crew/background-crew-desktop.jpg') no-repeat center center;
+    background-size: cover;
 }
 .bg-technology{
     background: url('../assets/technology/background-technology-desktop.jpg') no-repeat center center;
+    background-size: cover;
 }
 
 body{
@@ -92,12 +92,13 @@ header{
     width: 100%;
     padding: 50px 0;
     display: flex;
+    justify-content: space-between;
     .header__logo{
         align-self: center;
         padding: 0 50px;
     }
     .line{
-        width: 473px;
+        width: 573px;
         height: 1px;
         background: $color-white;
         opacity: 0.2515;
@@ -170,21 +171,194 @@ section.home{
     justify-content: space-between;
     max-width: 1080px;
 }
+section.technology{
+    .fw-700{
+        opacity: 0.25;
+        margin-right: 10px;
+    }
+    .container__techinfo{
+        width: 100%;
+        height: 700px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .container__menu_image{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .tech-menu{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                height: 500px;
+                
+                .tech-selector{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 300px;
+                    width: 150px;
+                    .circle{
+                        display: inline-flex;
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        margin-right: 1.5px;
+                        cursor: pointer;
+                        justify-content: center;
+                        align-items: center;
+                        color: $color-white;
+                        text-align: center;
+                        font-family: Bellefair;
+                        font-size: 32px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        background: transparent;
+                        border: 1px solid rgba(255,255,255,0.25);
+                    }
+                    .active{
+                        background: $color-white;
+                        color:#0B0D17;
+                    }
+                }
+            }
+            .tech-content{
+                h4{
+                    color: #D0D6F9;
+                    font-family: Barlow Condensed;
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    letter-spacing: 2.7px;
+                    margin-bottom: 10px;
+                }
+                h3{
+                    margin-bottom: 15px;
+                }
+                p{
+                    width: 444px;
+                    color: #D0D6F9;
+                    font-family: Barlow;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 32px; /* 177.778% */
+                }
+            }
+            .container__tech_image{
+                width: 552px;
+                height: 640px;
+                .tech-image{
+                    width: 100%;
+                    height: 100%;
+                    background: url('../assets/technology/image-launch-vehicle-portrait.jpg') no-repeat center center;
+                    mix-blend-mode: screen;
+                }
+                .Spaceport{
+                    background: url('../assets/technology/image-spaceport-portrait.jpg') no-repeat center center;
+                    mix-blend-mode: screen;
+                }
+                .Space-capsule{
+                    background: url('../assets/technology/image-space-capsule-portrait.jpg') no-repeat center center;
+                    mix-blend-mode: screen;
+                }
+            }
+        }
+    }
+}
+section.crew{
+    justify-content: space-between;
+    max-width: 1180px;
+    .container__crewinfo{
+        display: flex;
+        max-height: 600px;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .teammate-infos{
+            position: relative;
+            height: 300px;
+            top: -10px;
+        }
+        .fw-700{
+            opacity: 0.25;
+            margin-right: 10px;
+        }
+        h6{
+            position: relative;
+            top:-50px;
+        }
+        h4{
+            color: #FFF;
+            font-family: Bellefair;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-transform: uppercase;
+            opacity: 0.5042;
+            margin-bottom: 10px;
+        }
+        h3{
+            margin-bottom: 20px;
+        }
+        p{
+            width: 444px;
+            color: #D0D6F9;
+            font-family: Barlow;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 32px; /* 177.778% */
+        }
+    }
+    .container__crewimage{
+        height: 100%;
+        .image__teammate{
+            width: 568.072px;
+            height: 712px;
+            flex-shrink: 0;
+            background: url("../assets/crew/image-douglas-hurley.webp") no-repeat center bottom;
+            background-size: contain;
+        }
+        .Mark-Shuttleworth{
+            width: 453.44px;
+            height: 654px;
+            background: url("../assets/crew/image-mark-shuttleworth.webp") no-repeat center bottom;
+            background-size: contain;
+        }
+        .Victor-Glover{
+            width: 554.388px;
+            height: 681px;
+            background: url("../assets/crew/image-victor-glover.webp") no-repeat center 50px;
+            background-size: contain;
+        }
+        .Anousheh-Ansari{
+            width: 615.567px;
+            height: 607px;
+            background: url("../assets/crew/image-anousheh-ansari.webp") no-repeat center 100px;
+            background-size: contain;
+        }
+    }
+}
 section.destination{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     .fw-700{
         opacity: 0.25;
         margin-right: 28px;
     }
     .container__image{
         width: 500px;
+        height: 500px;
         position: relative;
     }
     .image__planet{
-        width: 80%;
-        height: 80%;
+        width: 85%;
+        height: 85%;
         position: absolute;
         top : 100px;
         right: 0;
@@ -342,3 +516,173 @@ section.destination{
     }
 }
 
+@media screen and (max-width: 1056px){
+
+    section.crew{
+        h6{
+            text-align: left;
+            font-size: 20px;
+        }
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 100px;
+        .container__crewimage{
+            .image__teammate{
+                width: 456.372px;
+                height: 572px;
+            }
+        }
+        .container__crewinfo{
+            .teammate-infos{
+                height: 250px;
+                h3{
+                    margin: 5px;
+                    font-size: 40px;
+                }
+                h4{
+                    font-size: 24px;
+                }
+                p#crew-bio{
+                    font-size: 16px;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 994px) {
+    body{
+        background: url('../assets/home/background-home-mobile.jpg') no-repeat center center;
+        background-size:cover;
+    }
+
+    header{
+        padding: 0;
+        margin: 0;
+        .line{
+            display: none;
+        }
+        .header__nav{
+            width: 450px;
+            height: 96px;
+            span{
+                display: none;
+            }
+            .tabs-highlighter{
+                width: 41px;
+                left:55px;
+            }
+        }
+    }
+
+    section.container {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        margin: 150px 0  0 0;
+        .container__content{
+            border:0;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 150px;
+            h5{
+                font-size: 20px;
+            }
+            p{
+                font-size: 16px;
+            }	
+        }
+        .container__btn{
+            margin-bottom: 150px;
+        }
+    }
+
+    section.destination{
+        align-items: center;
+        text-align: center;
+        .container__image{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            h6{
+                align-self: flex-start;
+                margin-left: -50px;
+            }
+            .image__planet{
+                position: relative;
+                top: 65px;
+            }
+        }
+        .container__informations{
+            align-items: center;
+            margin-bottom: 100px;
+            h2{
+                font-size: 80px;
+            }
+            p{
+                font-size: 16px;
+                
+            }
+        }
+    }
+    
+    section.technology{
+        
+
+        .container__techinfo{
+            padding: 0;
+            h6{
+                padding: 0 0 20px 50px;
+            }
+            .container__menu_image{
+                flex-direction: column-reverse;
+                .tech-menu{
+                    flex-direction: column;
+                    justify-content: center;
+                    .tech-content{
+                        text-align: center;
+                        h3{
+                            font-size: 40px;
+                        }
+                        p{
+                            font-size: 16px;
+                        }
+                    }
+                    .tech-selector{
+                        flex-direction: row;
+                        width: 300px;
+                        height: 100px;
+                        .circle{
+                            width: 80px;
+                            height: 80px;
+                            margin-right: 1.5px;
+                        }
+                    }
+                }
+                .container__tech_image{
+                    width: 100%;
+                    height: 300px;
+                    .tech-image{
+                        width: 100%;
+                        height: 300px;
+                        background-size: cover;
+                        background-position: bottom;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        .header__nav{
+            display: none;
+        }
+        .header__logo{
+            padding: 20px 20px;
+        }
+    }
+}

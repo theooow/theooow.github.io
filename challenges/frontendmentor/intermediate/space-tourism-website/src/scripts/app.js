@@ -72,4 +72,63 @@ window.addEventListener('DOMContentLoaded', () => {
             planetTravel.textContent = newData[0].travel
         })
     })
+
+    /* Circle tabs highlighter */
+    const circleTabs = document.querySelectorAll('circle')
+    circleTabs.forEach( (tab, index) => {
+        tab.addEventListener('click', () => {
+            let circleHighlighter = document.querySelector('.circle-selector')
+            circleHighlighter.setAttribute('cx', `${tab.getAttribute('cx')}`)
+            circleHighlighter.setAttribute('cy', `${tab.getAttribute('cy')}`)
+            circleHighlighter.setAttribute('r', `${tab.getAttribute('r')}`)
+
+            const hash = tab.getAttribute('name').replace('-', ' ')
+            const newData = data.crew.filter( crew => crew.name === hash )
+            
+            // Change page content
+            const crewName = document.querySelector('#crew-name')
+            crewName.textContent = newData[0].name
+
+            const crewRole = document.querySelector('#crew-role')
+            crewRole.textContent = newData[0].role
+
+            const crewBio = document.querySelector('#crew-bio')
+            crewBio.textContent = newData[0].bio
+
+            const crewImage = document.querySelector('.image__teammate')
+            crewImage.classList.forEach( className => {
+                if( className !== 'image__teammate' )
+                    crewImage.classList.remove(className)
+            })
+            crewImage.classList.add(hash.replace(' ', '-'))
+        })
+    })
+
+    /* Tab highlighter technology */
+    const techTabs = document.querySelectorAll('.circle')
+    techTabs.forEach( (tab, index) => {
+        tab.addEventListener('click', () => {
+            techTabs.forEach( tab => {
+                tab.classList.remove('active')
+            })
+            tab.classList.add('active')
+
+            const hash = tab.getAttribute('name').replace('-', ' ')
+            const newData = data.technology.filter( tech => tech.name === hash )
+
+            // Change page content
+            const techTitle = document.querySelector('#tech-title')
+            techTitle.textContent = newData[0].name
+
+            const techDescription = document.querySelector('#tech-description')
+            techDescription.textContent = newData[0].description
+
+            const techImage = document.querySelector('.tech-image')
+            techImage.classList.forEach( className => {
+                if( className !== 'tech-image' )
+                    techImage.classList.remove(className)
+            })
+            techImage.classList.add(hash.replace(' ', '-'))
+        })
+    })
 })

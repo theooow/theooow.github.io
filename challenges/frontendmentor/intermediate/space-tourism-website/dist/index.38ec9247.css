@@ -58,20 +58,16 @@ h6 {
   font-size: 28px;
 }
 
-.bg-home {
-  background: url("background-home-desktop.df54af4e.jpg") center no-repeat;
-}
-
 .bg-destination {
-  background: url("background-destination-desktop.52a963e4.jpg") center no-repeat;
+  background: url("background-destination-desktop.52a963e4.jpg") center / cover no-repeat;
 }
 
 .bg-crew {
-  background: url("background-crew-desktop.953cc365.jpg") center no-repeat;
+  background: url("background-crew-desktop.953cc365.jpg") center / cover no-repeat;
 }
 
 .bg-technology {
-  background: url("background-technology-desktop.1f82e89d.jpg") center no-repeat;
+  background: url("background-technology-desktop.1f82e89d.jpg") center / cover no-repeat;
 }
 
 body {
@@ -87,6 +83,7 @@ body {
 }
 
 header {
+  justify-content: space-between;
   width: 100%;
   padding: 50px 0;
   display: flex;
@@ -102,7 +99,7 @@ header .line {
   z-index: 1;
   background: #fff;
   align-self: center;
-  width: 473px;
+  width: 573px;
   height: 1px;
   margin: 32px 0;
   position: relative;
@@ -177,9 +174,199 @@ section.home {
   margin: 200px auto 110px;
 }
 
+section.technology .fw-700 {
+  opacity: .25;
+  margin-right: 10px;
+}
+
+section.technology .container__techinfo {
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 700px;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image {
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 500px;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector {
+  flex-direction: column;
+  justify-content: space-between;
+  width: 150px;
+  height: 300px;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle {
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  background: none;
+  border: 1px solid #ffffff40;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  margin-right: 1.5px;
+  font-family: Bellefair;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: inline-flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .active {
+  color: #0b0d17;
+  background: #fff;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-content h4 {
+  color: #d0d6f9;
+  letter-spacing: 2.7px;
+  margin-bottom: 10px;
+  font-family: Barlow Condensed;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-content h3 {
+  margin-bottom: 15px;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-content p {
+  color: #d0d6f9;
+  width: 444px;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image {
+  width: 552px;
+  height: 640px;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image .tech-image {
+  mix-blend-mode: screen;
+  background: url("image-launch-vehicle-portrait.9a3eac19.jpg") center no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image .Spaceport {
+  mix-blend-mode: screen;
+  background: url("image-spaceport-portrait.8e982ebe.jpg") center no-repeat;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image .Space-capsule {
+  mix-blend-mode: screen;
+  background: url("image-space-capsule-portrait.aeb78016.jpg") center no-repeat;
+}
+
+section.crew {
+  justify-content: space-between;
+  max-width: 1180px;
+}
+
+section.crew .container__crewinfo {
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-height: 600px;
+  display: flex;
+}
+
+section.crew .container__crewinfo .teammate-infos {
+  height: 300px;
+  position: relative;
+  top: -10px;
+}
+
+section.crew .container__crewinfo .fw-700 {
+  opacity: .25;
+  margin-right: 10px;
+}
+
+section.crew .container__crewinfo h6 {
+  position: relative;
+  top: -50px;
+}
+
+section.crew .container__crewinfo h4 {
+  color: #fff;
+  text-transform: uppercase;
+  opacity: .5042;
+  margin-bottom: 10px;
+  font-family: Bellefair;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+section.crew .container__crewinfo h3 {
+  margin-bottom: 20px;
+}
+
+section.crew .container__crewinfo p {
+  color: #d0d6f9;
+  width: 444px;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+section.crew .container__crewimage {
+  height: 100%;
+}
+
+section.crew .container__crewimage .image__teammate {
+  background: url("image-douglas-hurley.bf156fd3.webp") bottom / contain no-repeat;
+  flex-shrink: 0;
+  width: 568.072px;
+  height: 712px;
+}
+
+section.crew .container__crewimage .Mark-Shuttleworth {
+  background: url("image-mark-shuttleworth.14ec04f0.webp") bottom / contain no-repeat;
+  width: 453.44px;
+  height: 654px;
+}
+
+section.crew .container__crewimage .Victor-Glover {
+  background: url("image-victor-glover.455474c7.webp") 50% 50px / contain no-repeat;
+  width: 554.388px;
+  height: 681px;
+}
+
+section.crew .container__crewimage .Anousheh-Ansari {
+  background: url("image-anousheh-ansari.4358acf0.webp") 50% 100px / contain no-repeat;
+  width: 615.567px;
+  height: 607px;
+}
+
 section.destination {
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   display: flex;
 }
 
@@ -190,14 +377,15 @@ section.destination .fw-700 {
 
 section.destination .container__image {
   width: 500px;
+  height: 500px;
   position: relative;
 }
 
 section.destination .image__planet {
   background: url("image-moon.31f6a208.webp") center / contain no-repeat;
   align-self: center;
-  width: 80%;
-  height: 80%;
+  width: 85%;
+  height: 85%;
   position: absolute;
   top: 100px;
   right: 0;
@@ -363,6 +551,195 @@ section.destination .Titan {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media screen and (width <= 1056px) {
+  section.crew {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+
+  section.crew h6 {
+    text-align: left;
+    font-size: 20px;
+  }
+
+  section.crew .container__crewimage .image__teammate {
+    width: 456.372px;
+    height: 572px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos {
+    height: 250px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos h3 {
+    margin: 5px;
+    font-size: 40px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos h4 {
+    font-size: 24px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos p#crew-bio {
+    margin: 0 auto;
+    font-size: 16px;
+  }
+}
+
+@media screen and (width <= 994px) {
+  body {
+    background: url("background-home-mobile.281dd2b8.jpg") center / cover no-repeat;
+  }
+
+  header {
+    margin: 0;
+    padding: 0;
+  }
+
+  header .line {
+    display: none;
+  }
+
+  header .header__nav {
+    width: 450px;
+    height: 96px;
+  }
+
+  header .header__nav span {
+    display: none;
+  }
+
+  header .header__nav .tabs-highlighter {
+    width: 41px;
+    left: 55px;
+  }
+
+  section.container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 150px 0 0;
+  }
+
+  section.container .container__content {
+    text-align: center;
+    border: 0;
+    align-items: center;
+    margin-bottom: 150px;
+  }
+
+  section.container .container__content h5 {
+    font-size: 20px;
+  }
+
+  section.container .container__content p {
+    font-size: 16px;
+  }
+
+  section.container .container__btn {
+    margin-bottom: 150px;
+  }
+
+  section.destination {
+    text-align: center;
+    align-items: center;
+  }
+
+  section.destination .container__image {
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+  }
+
+  section.destination .container__image h6 {
+    align-self: flex-start;
+    margin-left: -50px;
+  }
+
+  section.destination .container__image .image__planet {
+    position: relative;
+    top: 65px;
+  }
+
+  section.destination .container__informations {
+    align-items: center;
+    margin-bottom: 100px;
+  }
+
+  section.destination .container__informations h2 {
+    font-size: 80px;
+  }
+
+  section.destination .container__informations p {
+    font-size: 16px;
+  }
+
+  section.technology .container__techinfo {
+    padding: 0;
+  }
+
+  section.technology .container__techinfo h6 {
+    padding: 0 0 20px 50px;
+  }
+
+  section.technology .container__techinfo .container__menu_image {
+    flex-direction: column-reverse;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content {
+    text-align: center;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content h3 {
+    font-size: 40px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content p {
+    font-size: 16px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector {
+    flex-direction: row;
+    width: 300px;
+    height: 100px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle {
+    width: 80px;
+    height: 80px;
+    margin-right: 1.5px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image {
+    width: 100%;
+    height: 300px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image .tech-image {
+    background-position: bottom;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media screen and (width <= 600px) {
+  header .header__nav {
+    display: none;
+  }
+
+  header .header__logo {
+    padding: 20px;
+  }
 }
 
 /*# sourceMappingURL=index.38ec9247.css.map */

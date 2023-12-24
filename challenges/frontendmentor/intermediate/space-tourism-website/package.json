@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "start": "del .parcel-cache && parcel",
-    "build": "parcel build"
+    "build": "parcel build --public-url ./ "
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.10.3",
