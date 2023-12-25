@@ -76,6 +76,7 @@ body {
   align-items: flex-start;
   min-height: 100vh;
   display: flex;
+  overflow-x: hidden;
 }
 
 .fw-700 {
@@ -87,6 +88,10 @@ header {
   width: 100%;
   padding: 50px 0;
   display: flex;
+}
+
+header .cross, header .burger {
+  display: none;
 }
 
 header .header__logo {
@@ -148,6 +153,7 @@ header .header__nav ul li a {
   letter-spacing: 2.7px;
   text-transform: uppercase;
   cursor: pointer;
+  border: 3px solid #0000;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -158,6 +164,10 @@ header .header__nav ul li a {
   line-height: normal;
   text-decoration: none;
   display: flex;
+}
+
+header .header__nav ul li a:hover {
+  border-bottom: 3px outset #ffffff80;
 }
 
 header .header__nav ul li a span {
@@ -229,6 +239,10 @@ section.technology .container__techinfo .container__menu_image .tech-menu .tech-
   display: inline-flex;
 }
 
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle:hover {
+  border: 1px solid #fff;
+}
+
 section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .active {
   color: #0b0d17;
   background: #fff;
@@ -286,6 +300,17 @@ section.crew {
   max-width: 1180px;
 }
 
+section.crew .fw-700 {
+  opacity: .25;
+  margin-right: 10px;
+}
+
+section.crew .container__crewinfo_image {
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+}
+
 section.crew .container__crewinfo {
   flex-direction: column;
   justify-content: space-evenly;
@@ -299,14 +324,13 @@ section.crew .container__crewinfo .teammate-infos {
   top: -10px;
 }
 
-section.crew .container__crewinfo .fw-700 {
-  opacity: .25;
-  margin-right: 10px;
+section.crew .container__crewinfo .selector circle {
+  cursor: pointer;
 }
 
-section.crew .container__crewinfo h6 {
-  position: relative;
-  top: -50px;
+section.crew .container__crewinfo .selector circle:hover {
+  fill: #fff;
+  opacity: .5;
 }
 
 section.crew .container__crewinfo h4 {
@@ -339,6 +363,10 @@ section.crew .container__crewimage {
   height: 100%;
 }
 
+section.crew .container__crewimage .hidden-line {
+  display: none;
+}
+
 section.crew .container__crewimage .image__teammate {
   background: url("image-douglas-hurley.bf156fd3.webp") bottom / contain no-repeat;
   flex-shrink: 0;
@@ -359,9 +387,9 @@ section.crew .container__crewimage .Victor-Glover {
 }
 
 section.crew .container__crewimage .Anousheh-Ansari {
-  background: url("image-anousheh-ansari.4358acf0.webp") 50% 100px / contain no-repeat;
+  background: url("image-anousheh-ansari.4358acf0.webp") 50% 0 / contain no-repeat;
   width: 615.567px;
-  height: 607px;
+  height: 650px;
 }
 
 section.destination {
@@ -373,6 +401,12 @@ section.destination {
 section.destination .fw-700 {
   opacity: .25;
   margin-right: 28px;
+}
+
+section.destination .container__image_info {
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
 }
 
 section.destination .container__image {
@@ -409,6 +443,7 @@ section.destination .Titan {
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
+  padding: 50px 50px 0;
   display: flex;
 }
 
@@ -434,7 +469,10 @@ section.destination .Titan {
 
 .container__btn {
   justify-content: center;
+  height: 274px;
+  margin-top: 100px;
   display: flex;
+  position: relative;
 }
 
 .container__btn .round-btn {
@@ -444,6 +482,18 @@ section.destination .Titan {
   align-self: flex-end;
   width: 274px;
   height: 274px;
+}
+
+.container__btn .round-btn:hover:before {
+  content: "";
+  z-index: -1;
+  background: #ffffff1a;
+  border-radius: 274px;
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  top: calc(50% - 225px);
+  left: calc(50% - 225px);
 }
 
 .container__btn .round-btn a {
@@ -497,12 +547,17 @@ section.destination .Titan {
   color: #d0d6f9;
   letter-spacing: 2.7px;
   cursor: pointer;
+  border-bottom: 3px solid #0000;
   font-family: Barlow Condensed;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   list-style: none;
+}
+
+.container__informations nav ul li:hover {
+  border-bottom: 3px outset #ffffff80;
 }
 
 .container__informations nav ul .active {
@@ -559,16 +614,28 @@ section.destination .Titan {
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
+    margin-top: 40px !important;
   }
 
   section.crew h6 {
-    text-align: left;
+    align-self: flex-start;
+    margin-bottom: 100px;
+    margin-left: 50px;
     font-size: 20px;
+  }
+
+  section.crew .container__crewinfo_image {
+    flex-direction: column;
+    align-items: center;
   }
 
   section.crew .container__crewimage .image__teammate {
     width: 456.372px;
     height: 572px;
+  }
+
+  section.crew .container__crewimage .Anousheh-Ansari {
+    background-position: 0 100px;
   }
 
   section.crew .container__crewinfo .teammate-infos {
@@ -592,7 +659,19 @@ section.destination .Titan {
 
 @media screen and (width <= 994px) {
   body {
-    background: url("background-home-mobile.281dd2b8.jpg") center / cover no-repeat;
+    background: url("background-home-tablet.3f0f8f1b.jpg") center / cover no-repeat;
+  }
+
+  .bg-destination {
+    background: url("background-destination-tablet.c6b261a1.jpg") center / cover no-repeat;
+  }
+
+  .bg-crew {
+    background: url("background-crew-tablet.23521232.jpg") center / cover no-repeat;
+  }
+
+  .bg-technology {
+    background: url("background-technology-tablet.3b07c809.jpg") center / cover no-repeat;
   }
 
   header {
@@ -622,7 +701,7 @@ section.destination .Titan {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 150px 0 0;
+    margin-top: 100px;
   }
 
   section.container .container__content {
@@ -641,11 +720,41 @@ section.destination .Titan {
   }
 
   section.container .container__btn {
-    margin-bottom: 150px;
+    height: 242px;
+    margin: 0;
+  }
+
+  section.container .container__btn .round-btn {
+    width: 242px;
+    height: 242px;
+  }
+
+  section.container .container__btn .round-btn a {
+    font-size: 32px;
+  }
+
+  section.container .container__btn .round-btn:hover:before {
+    border-radius: 242px;
+    width: 400px;
+    height: 400px;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
   }
 
   section.destination {
     text-align: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  section.destination h6 {
+    align-self: flex-start;
+    margin-left: 50px;
+    font-size: 20px;
+  }
+
+  section.destination .container__image_info {
+    flex-direction: column;
     align-items: center;
   }
 
@@ -653,11 +762,6 @@ section.destination .Titan {
     flex-direction: column;
     justify-content: center;
     display: flex;
-  }
-
-  section.destination .container__image h6 {
-    align-self: flex-start;
-    margin-left: -50px;
   }
 
   section.destination .container__image .image__planet {
@@ -678,12 +782,18 @@ section.destination .Titan {
     font-size: 16px;
   }
 
-  section.technology .container__techinfo {
-    padding: 0;
+  section.technology {
+    margin-top: 0;
   }
 
-  section.technology .container__techinfo h6 {
+  section.technology h6 {
+    margin: 40px 0 50px;
     padding: 0 0 20px 50px;
+    font-size: 20px;
+  }
+
+  section.technology .container__techinfo {
+    padding: 0;
   }
 
   section.technology .container__techinfo .container__menu_image {
@@ -721,24 +831,335 @@ section.destination .Titan {
 
   section.technology .container__techinfo .container__menu_image .container__tech_image {
     width: 100%;
-    height: 300px;
+    height: 40vw;
   }
 
   section.technology .container__techinfo .container__menu_image .container__tech_image .tech-image {
-    background-position: bottom;
-    background-size: cover;
+    background: url("image-launch-vehicle-landscape.41497a76.jpg") center / cover no-repeat;
     width: 100%;
-    height: 300px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image .Spaceport {
+    background: url("image-spaceport-landscape.8f21cbcf.jpg") center / cover no-repeat;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image .Space-capsule {
+    background: url("image-space-capsule-landscape.252e2a59.jpg") center / cover no-repeat;
   }
 }
 
 @media screen and (width <= 600px) {
+  .container {
+    padding: 0;
+  }
+
+  header .burger {
+    cursor: pointer;
+    background: url("icon-hamburger.1d45749e.svg") center no-repeat;
+    width: 24px;
+    height: 21px;
+    margin: 30px 20px 0 0;
+    display: block;
+  }
+
+  header .show {
+    transition: transform .1s ease-in-out;
+    transform: translate(-254px);
+  }
+
   header .header__nav {
+    z-index: 2;
+    width: 254px;
+    height: 100vh;
+    transition: transform .3s ease-in-out;
+    position: fixed;
+    right: -254px;
+  }
+
+  header .header__nav .cross {
+    cursor: pointer;
+    background: url("icon-close.2f2392e8.svg") center no-repeat;
+    width: 19.092px;
+    height: 19.092px;
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+  }
+
+  header .header__nav .vertical-highlighter {
+    background: #fff;
+    width: 4px;
+    height: 50px;
+    transition: all .3s ease-in-out;
+    position: absolute;
+    top: 125px;
+    right: 0;
+  }
+
+  header .header__nav ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 250px;
+  }
+
+  header .header__nav ul li {
+    width: 100%;
+    height: 50px;
+  }
+
+  header .header__nav ul li a {
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    display: block;
+  }
+
+  header .header__nav ul li a:hover {
+    border-bottom: 0;
+  }
+
+  header .header__nav ul li span {
+    display: inline;
+  }
+
+  header .header__nav .tabs-highlighter {
     display: none;
   }
 
   header .header__logo {
     padding: 20px;
+  }
+}
+
+@media screen and (width <= 376px) {
+  body {
+    background: url("background-home-mobile.281dd2b8.jpg") center / cover no-repeat;
+  }
+
+  .bg-destination {
+    background: url("background-destination-mobile.c27b6ea6.jpg") center / cover no-repeat;
+  }
+
+  .bg-crew {
+    background: url("background-crew-mobile.4c0e96e1.jpg") center / cover no-repeat;
+  }
+
+  .bg-technology {
+    background: url("background-technology-mobile.d85f3c75.jpg") center / cover no-repeat;
+  }
+
+  section.home {
+    margin: 25px 0 20px;
+  }
+
+  section.home .container__content {
+    width: 100vw;
+    margin-bottom: 50px;
+  }
+
+  section.home .container__content h1 {
+    font-size: 80px;
+  }
+
+  section.home .container__content h5 {
+    font-size: 16px;
+  }
+
+  section.home .container__content p.home-p {
+    width: 327px;
+    font-size: 15px;
+  }
+
+  section.home .container__btn {
+    margin: 0;
+  }
+
+  section.home .container__btn .round-btn {
+    width: 150px;
+    height: 150px;
+  }
+
+  section.home .container__btn .round-btn a {
+    font-size: 20px;
+  }
+
+  section.destination h6 {
+    align-self: center;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  section.destination h6 span.fw-700 {
+    margin-right: 5px;
+  }
+
+  section.destination .container__image_info .container__image {
+    width: 249px;
+    height: 249px;
+  }
+
+  section.destination .container__image_info .container__image .image__planet {
+    top: 20px;
+  }
+
+  section.destination .container__image_info .container__informations {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  section.destination .container__image_info .container__informations ul li {
+    font-size: 14px;
+  }
+
+  section.destination .container__image_info .container__informations h2 {
+    margin-top: 20px;
+    font-size: 56px;
+  }
+
+  section.destination .container__image_info .container__informations p {
+    width: 327px;
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  section.destination .container__image_info .container__informations .line {
+    width: 327px;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel {
+    flex-direction: column;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel .informations__travel__item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel .informations__travel__item h3 {
+    font-size: 28px;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel .informations__travel__item p {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  section.crew h6 {
+    align-self: center;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  section.crew h6 span.fw-700 {
+    margin-right: 5px;
+  }
+
+  section.crew .container__crewinfo_image {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo {
+    flex-direction: column-reverse;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo .selector {
+    margin-bottom: 40px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo h4 {
+    font-size: 16px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo h3 {
+    font-size: 24px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo p {
+    width: 327px;
+    font-size: 15px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    display: flex;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .image__teammate {
+    width: 177px;
+    height: 222px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .hidden-line {
+    background: #383b4b;
+    width: 327px;
+    height: 1px;
+    display: block;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .Victor-Glover {
+    background-position: 0 10px;
+    width: 180.726px;
+    height: 222px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .Anousheh-Ansari {
+    background-position: 0 0;
+    width: 226.147px;
+    height: 223px;
+  }
+
+  section.technology h6 {
+    align-self: center;
+    margin: 0 0 40px;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  section.technology h6 span.fw-700 {
+    margin-right: 5px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu {
+    justify-content: flex-start;
+    height: auto;
+    margin-top: 50px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector {
+    width: 160px;
+    height: 40px;
+    margin-bottom: 30px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content {
+    width: 327px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content h4 {
+    font-size: 14px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content h3 {
+    font-size: 24px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content p {
+    width: 327px;
+    font-size: 15px;
+    line-height: 25px;
   }
 }
 

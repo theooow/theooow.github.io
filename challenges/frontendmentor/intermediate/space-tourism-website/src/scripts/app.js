@@ -34,6 +34,27 @@ window.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    const verticalTabs = document.querySelectorAll('.nav-link')
+    verticalTabs.forEach( (tab, index) => {
+        tab.addEventListener('click', () => {
+            let verticalHighlighter = document.querySelector('.vertical-highlighter')
+            verticalHighlighter.style.height = `${tab.offsetHeight}px`
+            verticalHighlighter.style.top = `${tab.offsetTop}px`
+        })
+    })
+
+    // If resize window
+    window.addEventListener('resize', () => {
+        const activeTab = document.querySelector('.nav-link.active')
+        let tabsHighlighter = document.querySelector('.tabs-highlighter')
+        tabsHighlighter.style.width = `${activeTab.offsetWidth}px`
+        tabsHighlighter.style.left = `${activeTab.offsetLeft}px`
+
+        let verticalHighlighter = document.querySelector('.vertical-highlighter')
+        verticalHighlighter.style.height = `${activeTab.offsetHeight}px`
+        verticalHighlighter.style.top = `${activeTab.offsetTop}px`
+    })
+
     /*Mini tab highlighter*/
     const miniTabs = document.querySelectorAll('.mini-nav-link')
     miniTabs.forEach( (tab, index) => {
@@ -130,5 +151,15 @@ window.addEventListener('DOMContentLoaded', () => {
             })
             techImage.classList.add(hash.replace(' ', '-'))
         })
+    })
+
+    const burger = document.querySelector('.burger')
+    const nav = document.querySelector('nav.header__nav')
+    burger.addEventListener('click', () => {
+        nav.classList.add('show')
+    })
+    const close = document.querySelector('.cross')
+    close.addEventListener('click', () => {
+        nav.classList.remove('show')
     })
 })

@@ -18,14 +18,17 @@
     </div>
     <div class="line"></div>
     <nav class="header__nav">
+      <div class="cross"></div>
       <ul>
-        <li><a class="nav-link" name="home"><span class="fw-700">00</span> Home</a></li>
+        <li><a class="nav-link active" name="home"><span class="fw-700">00</span> Home</a></li>
         <li><a class="nav-link" name="destination"><span class="fw-700">01</span> Destination</a></li>
         <li><a class="nav-link" name="crew"><span class="fw-700" >02</span> Crew</a></li>
         <li><a class="nav-link" name="technology"><span class="fw-700">03</span> Technology</a></li>
       </ul>
       <div class="tabs-highlighter"></div>
+      <div class="vertical-highlighter"></div>
     </nav>
+    <div class="burger"></div>
   </header>
 
   <section class="container home">
@@ -46,65 +49,70 @@
   </section>
 
   <section class="container destination hidden">
-    <div class="container__image">
     <h6><span class="fw-700">01 </span>Pick your destination</h6>
-      <div class="image__planet">
+    <div class="container__image_info">
+      <div class="container__image">
+        <div class="image__planet">
+        </div>
       </div>
-    </div>
-    <div class="container__informations">
-      <nav>
-        <ul id="planet-list">
-          <li name="moon" class="mini-nav-link active">Moon</li>
-          <li name="mars" class="mini-nav-link">Mars</li>
-          <li name="europa" class="mini-nav-link">Europa</li>
-          <li name="titan" class="mini-nav-link">Titan</li>
-        </ul>
-        <div class="mini-tabs-highlighter"></div>
-      </nav>
-      <h2 id="planet_title">Moon</h2>
-      <p id="planet_description">
-        See our planet as you’ve never seen it before. 
-        A perfect relaxing trip away to help regain 
-        perspective and come back refreshed. While you’re 
-        there, take in some history by visiting the 
-        Luna 2 and Apollo 11 landing sites.
-      </p>
-      <div class="line"></div>
-      <div class="informations__travel">
+      <div class="container__informations">
+        <nav>
+          <ul id="planet-list">
+            <li name="moon" class="mini-nav-link active">Moon</li>
+            <li name="mars" class="mini-nav-link">Mars</li>
+            <li name="europa" class="mini-nav-link">Europa</li>
+            <li name="titan" class="mini-nav-link">Titan</li>
+          </ul>
+          <div class="mini-tabs-highlighter"></div>
+        </nav>
+        <h2 id="planet_title">Moon</h2>
+        <p id="planet_description">
+          See our planet as you’ve never seen it before. 
+          A perfect relaxing trip away to help regain 
+          perspective and come back refreshed. While you’re 
+          there, take in some history by visiting the 
+          Luna 2 and Apollo 11 landing sites.
+        </p>
+        <div class="line"></div>
+        <div class="informations__travel">
+          <div class="informations__travel__item">
+            <p>AVG. Distance</p>
+            <h3 id="planet_distance">384,400 km</h3>
+        </div>
         <div class="informations__travel__item">
-          <p>AVG. Distance</p>
-          <h3 id="planet_distance">384,400 km</h3>
+          <p>EST. Travel Time</p>
+          <h3 id="planet_traveltime">3 days</h3>
       </div>
-      <div class="informations__travel__item">
-        <p>EST. Travel Time</p>
-        <h3 id="planet_traveltime">3 days</h3>
     </div>
   </section>
 
   <section class="container crew hidden">
-    <div class="container__crewinfo">
-      <h6><span class="fw-700">02 </span>Meet your crew</h6>
-      <div class="teammate-infos">
-        <h4 id="crew-role">Commander</h4>
-        <h3 id="crew-name">Douglas Hurley</h3>
-        <p id="crew-bio">
-          Douglas Gerald Hurley is an American engineer, former Marine 
-          Corps pilot and former NASA astronaut. He launched into 
-          space for the third time as commander of Crew Dragon Demo-2.
-        </p>
+    <h6><span class="fw-700">02 </span>Meet your crew</h6>
+    <div class="container__crewinfo_image">
+      <div class="container__crewinfo">
+        <div class="teammate-infos">
+          <h4 id="crew-role">Commander</h4>
+          <h3 id="crew-name">Douglas Hurley</h3>
+          <p id="crew-bio">
+            Douglas Gerald Hurley is an American engineer, former Marine 
+            Corps pilot and former NASA astronaut. He launched into 
+            space for the third time as commander of Crew Dragon Demo-2.
+          </p>
+        </div>
+        <div class="selector">
+          <svg xmlns="http://www.w3.org/2000/svg" width="132" height="15" viewBox="0 0 132 15" fill="none">
+            <circle cx="7.5" cy="7.5" r="7.5" fill="white" class="circle-selector"/>
+            <circle opacity="0.174363" cx="7.5" cy="7.5" r="7.5" fill="white" name="Douglas-Hurley"/>
+            <circle opacity="0.174363" cx="46.5" cy="7.5" r="7.5" fill="white" name="Mark-Shuttleworth"/>
+            <circle opacity="0.174363" cx="85.5" cy="7.5" r="7.5" fill="white" name="Victor-Glover"/>
+            <circle opacity="0.174363" cx="124.5" cy="7.5" r="7.5" fill="white" name="Anousheh-Ansari"/>
+          </svg>
+        </div>
       </div>
-      <div class="selector">
-        <svg xmlns="http://www.w3.org/2000/svg" width="132" height="15" viewBox="0 0 132 15" fill="none">
-          <circle cx="7.5" cy="7.5" r="7.5" fill="white" class="circle-selector"/>
-          <circle opacity="0.174363" cx="7.5" cy="7.5" r="7.5" fill="white" name="Douglas-Hurley"/>
-          <circle opacity="0.174363" cx="46.5" cy="7.5" r="7.5" fill="white" name="Mark-Shuttleworth"/>
-          <circle opacity="0.174363" cx="85.5" cy="7.5" r="7.5" fill="white" name="Victor-Glover"/>
-          <circle opacity="0.174363" cx="124.5" cy="7.5" r="7.5" fill="white" name="Anousheh-Ansari"/>
-        </svg>
-      </div>
-    </div>
-    <div class="container__crewimage">
-      <div class="image__teammate">
+      <div class="container__crewimage">
+        <div class="image__teammate">
+        </div>
+        <div class="hidden-line"></div>
       </div>
     </div>
   </section>
