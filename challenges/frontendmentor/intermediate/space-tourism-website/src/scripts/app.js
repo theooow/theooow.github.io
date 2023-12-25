@@ -103,7 +103,7 @@ window.addEventListener('DOMContentLoaded', () => {
             circleHighlighter.setAttribute('cy', `${tab.getAttribute('cy')}`)
             circleHighlighter.setAttribute('r', `${tab.getAttribute('r')}`)
 
-            const hash = tab.getAttribute('name').replace('-', ' ')
+            const hash = tab.getAttribute('id').replace('-', ' ')
             const newData = data.crew.filter( crew => crew.name === hash )
             
             // Change page content
@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', () => {
             })
             tab.classList.add('active')
 
-            const hash = tab.getAttribute('name').replace('-', ' ')
+            const hash = tab.getAttribute('id').replace('-', ' ')
             const newData = data.technology.filter( tech => tech.name === hash )
 
             // Change page content
