@@ -11,8 +11,8 @@ export class Level1 {
         this.scene.physics.world.setBounds(0, 0, 10000, this.scene.sys.game.screenBaseSize.height)
 
         // Si la largeur de l'écran est inférieur à 480px, on ZOOM
-        if(this.width < 600) {
-            this.scene.cameras.main.setZoom(this.width / 600 * 1.5)
+        if(window.innerWidth < 480) {
+            this.scene.cameras.main.setZoom(Window.innerWidth / 480 * 1.5)
         }
 
         this.create()
