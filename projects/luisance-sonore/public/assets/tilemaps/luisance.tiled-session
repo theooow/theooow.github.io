@@ -1,0 +1,49 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "luisance.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "#tileset": {
+            "scaleInDock": 1
+        },
+        "luisance.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 623.5,
+                "y": 465.5
+            }
+        },
+        "luisance.tmx#tileset": {
+            "scaleInDock": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/theoo/Documents/dev/perso/js/luisance/src/assets/tilemaps",
+    "last.imagePath": "C:/Users/theoo/Documents/dev/perso/js/luisance/src/assets/images",
+    "map.height": 45,
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 420,
+    "openFiles": [
+        "luisance.tmx"
+    ],
+    "project": "luisance.tiled-project",
+    "recentFiles": [
+        "luisance.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
