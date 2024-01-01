@@ -39,6 +39,7 @@ export class Player extends Base {
     }
 
     update(cursors) {
+        this.scene.input.addPointer(2) 
         // Keyboard controls
         if (cursors.left.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX < this.scene.sys.scale.gameSize.width / 2)) {
             this.body.setVelocityX(-this.playerSpeed);
