@@ -10,11 +10,6 @@ export class Level1 {
         this.scene.cameras.main.setBounds(0, 0, 10000, this.height)
         this.scene.physics.world.setBounds(0, 0, 10000, this.scene.sys.game.screenBaseSize.height)
 
-        // Si la largeur de l'écran est inférieur à 480px, on ZOOM
-        if(window.innerWidth < 480) {
-            this.scene.cameras.main.setZoom(Window.innerWidth / 480 * 1.5)
-        }
-
         this.create()
     }
 
@@ -74,8 +69,10 @@ export class Level1 {
         this.belowLayer = this.map.createLayer('below-player', this.tileset, 0, this.height / 4 - 200)
         this.map.setCollisionBetween(0, 200, true, true, this.worldLayer)
 
+        this.dialogPositionX = this.width / 2
+        this.dialogPositionY = this.height - this.scene.oldMan.height - 200
 
-        this.subTitle = this.scene.add.text(this.width / 2, this.height - 50,
+        this.subTitle = this.scene.add.text(this.dialogPositionX, this.dialogPositionY,
                             '(subtiles)', { 
                                 backgroundColor: '#000',
                                 fill: '#fff',
@@ -84,8 +81,8 @@ export class Level1 {
                                 padding: 10,
                                 fontSize: 20,
                                 wordWrap: { width: window.innerWidth/1.5 - 40, useAdvancedWrap: true }
-                            }).setScrollFactor(0).setOrigin(0.5).setAlpha(0)
-        this.subTitle.setPosition(this.width / 2, this.height + this.subTitle.displayHeight)
+                            }).setScrollFactor(0).setOrigin(0.5, 1).setAlpha(0)
+
         this.subTitle.setDepth(100)
 
         this.answerLeft = this.scene.add.text(this.width / 2 - 25, this.height + 50,
@@ -122,7 +119,7 @@ export class Level1 {
             this.subTitle.setAlpha(1)
             this.tweens.add({
                 targets: this.subTitle,
-                y: this.height - 100,
+                y: this.dialogPositionY,
                 alpha: 1,
                 duration: 1000,
                 hold: line.length * 35,
@@ -164,7 +161,7 @@ export class Level1 {
 
             this.tweens.add({
                 targets: this.subTitle,
-                y: this.height - 120,
+                y: this.dialogPositionY,
                 alpha: 1,
                 duration: 1000,
                 ease: 'Power2',
@@ -175,7 +172,7 @@ export class Level1 {
             
             this.tweens.add({
                 targets: this.answerLeft,
-                y: this.height - 50,
+                y: this.dialogPositionY + 100,
                 alpha: 1,
                 duration: 1000,
                 ease: 'Power2',
@@ -186,7 +183,7 @@ export class Level1 {
 
             this.tweens.add({
                 targets: this.answerRight,
-                y: this.height - 50,
+                y: this.dialogPositionY +100,
                 alpha: 1,
                 duration: 1000,
                 ease: 'Power2',
@@ -238,7 +235,7 @@ export class Level1 {
         if(this.scene.player.body.blocked.right || this.scene.player.body.blocked.left) {
             this.clock.anims.pause()
         } else{
-            if (this.scene.player.body.velocity.x > 0 ) {
+            if (this.scene.player.body.velocity.x > 0) {
                 this.clock.anims.play('clock', true)
             } else if (this.scene.player.body.velocity.x < 0) {
                 this.clock.anims.play('reverse', true)

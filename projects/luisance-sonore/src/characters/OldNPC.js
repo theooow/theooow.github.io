@@ -89,6 +89,7 @@ export class OldNPC extends Base {
             console.log(answer)
         }else{
             this.isTalking = false
+            this.scene.player.isTalking = false
         }
     }
 
