@@ -42,18 +42,28 @@ export class Player extends Base {
         this.scene.input.addPointer(2) 
         // Keyboard controls
         if (cursors.left.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX < this.scene.sys.scale.gameSize.width / 2)) {
-            this.body.setVelocityX(-this.playerSpeed);
-            this.anims.play('left', true);
+            this.body.setVelocityX(-this.playerSpeed)
+            this.anims.play('left', true)
         } else if (cursors.right.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX > this.scene.sys.scale.gameSize.width / 2)) {
-            this.body.setVelocityX(this.playerSpeed);
-            this.anims.play('right', true);
+            this.body.setVelocityX(this.playerSpeed)
+            this.anims.play('right', true)
         } else if (cursors.up.isUp && cursors.left.isUp && cursors.right.isUp) {
-            this.body.setVelocityX(0);
-            this.anims.play('turn');
+            
+            this.body.setVelocityX(0)
+            this.anims.play('turn')
         }
         if (cursors.up.isDown && this.body.onFloor() || (this.swipeDirection == "up" && this.body.onFloor())) {
-            this.body.setVelocityY(-400);
+            this.scene.audio.jumpSound.play()
+            this.body.setVelocityY(-400)
         }
+
+        //If walking, playing sound
+        if(this.body.velocity.x != 0 && this.body.onFloor()) {
+            if(!this.scene.audio.walkSound.isPlaying) {
+                this.scene.audio.walkSound.play()
+            }
+        }else
+            this.scene.audio.walkSound.stop()
 
         // Touch controls
         if(!this.scene.input.activePointer.isDown && this.isClicling) {

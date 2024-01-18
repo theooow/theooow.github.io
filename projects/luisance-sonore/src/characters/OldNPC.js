@@ -80,13 +80,13 @@ export class OldNPC extends Base {
     async readDialog(key, index = 0){
         const line = this.dialogs[key].say[index]
         this.isTalking = true
+        this.scene.audio.dialogSound.play()
         await this.scene.level.showSubtiles(line)
         if(typeof this.dialogs[key].say[index + 1] !== 'undefined'){
             this.readDialog(key, index + 1)
         }
         else if(typeof this.dialogs[key].say[index + 2] === 'undefined' && this.dialogs[key].question){
             const answer = await this.scene.level.showQuestion(line, this.dialogs[key].answers, this)
-            console.log(answer)
         }else{
             this.isTalking = false
             this.scene.player.isTalking = false

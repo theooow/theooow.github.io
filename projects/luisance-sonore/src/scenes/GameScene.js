@@ -12,6 +12,17 @@ export class GameScene extends Scene {
   }
 
   create() {
+    this.audio = {
+      mainTheme: this.sound.add('mainTheme', {loop: true}),
+      jumpSound: this.sound.add('jumpSound'),
+      dialogSound: this.sound.add('dialogSound'),
+      dialogLowSound: this.sound.add('dialogLowSound'),
+      walkSound: this.sound.add('walkSound')
+    }
+
+    this.audio.mainTheme.loop = true
+    this.audio.mainTheme.volume = 0.6
+    this.audio.walkSound.loop = true
 
     this.player = this.physics.add.existing(new Player(this, 100, 0, 'dude'))
     this.player.setDepth(1)
@@ -32,6 +43,9 @@ export class GameScene extends Scene {
 
     // Create a helper object for our arrow keys 
     this.cursors = this.input.keyboard.createCursorKeys()
+
+
+    this.audio.mainTheme.play()
   }
   
   update() {

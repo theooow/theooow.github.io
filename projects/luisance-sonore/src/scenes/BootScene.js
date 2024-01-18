@@ -16,6 +16,11 @@ import ground3 from '../assets/images/ground_3.png'
 import tiles from '../assets/images/tileset.png'
 import level1 from '../assets/tilemaps/luisance.json'
 
+import mainTheme from '../assets/audios/main.wav'
+import jumpSound from '../assets/audios/Jump.wav'
+import dialogSound from '../assets/audios/dialog_high.wav'
+import dialogLowSound from '../assets/audios/dialog_low.wav'
+import walkSound from '../assets/audios/walk.wav'
 
 export class BootScene extends Scene {
 
@@ -51,6 +56,12 @@ export class BootScene extends Scene {
         clockSheet,
         { frameWidth: 1200, frameHeight: 1200 }
     )
+
+    this.load.audio('mainTheme', mainTheme)
+    this.load.audio('jumpSound', jumpSound)
+    this.load.audio('dialogSound', dialogSound)
+    this.load.audio('dialogLowSound', dialogLowSound)
+    this.load.audio('walkSound', walkSound)
   }
 
   create() {

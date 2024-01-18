@@ -196,7 +196,7 @@ export class Level1 {
 
     hideAnswers() {
         return new Promise((resolve, reject) => {
-
+            this.scene.audio.dialogLowSound.play()
             this.tweens.add({
                 targets: [this.answerLeft, this.answerRight],
                 y: this.height + 50,
