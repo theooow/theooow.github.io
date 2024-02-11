@@ -23,6 +23,7 @@ export class GameScene extends Scene {
 
     this.audio.mainTheme.loop = true
     this.audio.mainTheme.volume = 0.6
+    this.audio.jumpSound.volume = 0.5
     this.audio.walkSound.loop = true
 
     this.clock = new Clock(this);
