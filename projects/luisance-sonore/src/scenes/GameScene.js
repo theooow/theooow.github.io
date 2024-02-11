@@ -4,6 +4,7 @@ import {Player} from '../characters/Player'
 import {Level1} from '../levels/Level1'
 
 import { OldNPC } from '../characters/OldNPC'
+import { Clock } from '../objects/Clock'
 
 export class GameScene extends Scene {
 
@@ -23,6 +24,8 @@ export class GameScene extends Scene {
     this.audio.mainTheme.loop = true
     this.audio.mainTheme.volume = 0.6
     this.audio.walkSound.loop = true
+
+    this.clock = new Clock(this);
 
     this.player = this.physics.add.existing(new Player(this, 100, 0, 'dude'))
     this.player.setDepth(1)
@@ -44,11 +47,14 @@ export class GameScene extends Scene {
     // Create a helper object for our arrow keys 
     this.cursors = this.input.keyboard.createCursorKeys()
 
-
     this.audio.mainTheme.play()
   }
   
   update() {
+    const cursors = this.input.keyboard.createCursorKeys();
+
+
+    this.clock.updateClock('forward');
     this.level.update()
     this.player.update(this.cursors)
   }

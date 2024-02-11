@@ -2,7 +2,6 @@ import {Scene} from 'phaser'
 
 import spritesheet from '../assets/images/dude.png'
 import spritesheetOld from '../assets/images/old_man.png'
-import clockSheet from '../assets/images/clock-sheet.png'
 
 import skyBackground from '../assets/images/sky.png'
 import clouds1 from '../assets/images/clouds_1.png'
@@ -44,17 +43,12 @@ export class BootScene extends Scene {
     
     this.load.spritesheet('dude', 
         spritesheet,
-        { frameWidth: 32, frameHeight: 48 }
+        { frameWidth: 250, frameHeight: 250 }
     )
 
     this.load.spritesheet('oldMan',
         spritesheetOld,
         { frameWidth: 48, frameHeight: 64 }
-    )
-
-    this.load.spritesheet('clock',
-        clockSheet,
-        { frameWidth: 1200, frameHeight: 1200 }
     )
 
     this.load.audio('mainTheme', mainTheme)

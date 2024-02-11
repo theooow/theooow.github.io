@@ -5,7 +5,9 @@ export class Player extends Base {
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture);
         this.scene = scene;
-        this.body.setSize(32, 48);
+        this.body.setSize(250, 250);
+        // reduce sprite size
+        this.setScale(0.3);
         this.body.setBounce(0.2);
         this.body.setGravityY(300);
         this.body.setDragX(1000);
@@ -19,7 +21,7 @@ export class Player extends Base {
         this.scene.anims.create({
             key: 'left',
             frames: this.scene.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-            frameRate: 10,
+            frameRate: 7,
             repeat: -1
         });
         
@@ -32,7 +34,7 @@ export class Player extends Base {
         this.scene.anims.create({
             key: 'right',
             frames: this.scene.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-            frameRate: 10,
+            frameRate: 7,
             repeat: -1
         });
         this.scene.cameras.main.startFollow(this, false, 0.2, 0.05, 0, 200)

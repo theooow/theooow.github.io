@@ -19,28 +19,12 @@ export class Level1 {
         this.sky = this.scene.add.tileSprite(0, 0, this.width, this.height, 'skyBackground')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
+        this.scene.clock.createClock()
 
         this.farClouds = this.scene.add.tileSprite(0, 0, this.width, this.height, 'clouds1')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
-        this.clock = this.scene.add.sprite(0, 250, 'clock')
-        this.clock.setScale(0.1)
-
-
-        this.clock.anims.create({
-            key: 'clock',
-            frames: this.clock.anims.generateFrameNumbers('clock', { start: 0, end: 19 }),
-            frameRate: 10,
-            repeat: -1
-        })
-
-        this.clock.anims.create({
-            key: 'reverse',
-            frames: this.clock.anims.generateFrameNumbers('clock', { start: 19, end: 0 }),
-            frameRate: 10,
-            repeat: -1
-        })
 
         this.mountainsBack = this.scene.add.tileSprite(0, 0, this.width, this.height, 'rocks')
                             .setOrigin(0, 0)
@@ -227,20 +211,13 @@ export class Level1 {
         this.groundMid.tilePositionX = this.scene.cameras.main.scrollX * .9
         this.groundFront.tilePositionX = this.scene.cameras.main.scrollX
 
-        // The clock is always in the same position
-        this.clock.x = this.scene.cameras.main.scrollX + this.width / 2
-
         // If the player go right, clock animation start, else if the player go left, clock animation reverse
         // else the clock animation stop and memory the last frame
-        if(this.scene.player.body.blocked.right || this.scene.player.body.blocked.left) {
-            this.clock.anims.pause()
-        } else{
-            if (this.scene.player.body.velocity.x > 0) {
-                this.clock.anims.play('clock', true)
-            } else if (this.scene.player.body.velocity.x < 0) {
-                this.clock.anims.play('reverse', true)
-            } else {
-                this.clock.anims.pause()
+        if(!this.scene.player.body.blocked.right && !this.scene.player.body.blocked.left) {
+            if (this.scene.player.body.velocity.x == 200) {
+                this.scene.clock.updateClock('forward');
+            } else if (this.scene.player.body.velocity.x == -200) {
+                this.scene.clock.updateClock('backward');
             }
         }
     }
