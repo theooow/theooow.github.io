@@ -14,6 +14,8 @@ const SIZE_HEIGHT_SCREEN = 960
 
 export class GamePanel {
     constructor() {
+        const devicePixelRatio = window.devicePixelRatio || 1;
+
         const config = {
             type: Phaser.AUTO,
             physics: {
