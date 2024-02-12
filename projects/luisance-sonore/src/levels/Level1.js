@@ -53,12 +53,13 @@ export class Level1 {
         this.belowLayer = this.map.createLayer('below-player', this.tileset, 0, this.height / 4 - 200)
         this.map.setCollisionBetween(0, 200, true, true, this.worldLayer)
 
+        this.input = this.scene.input
+
         this.dialogPositionX = this.width / 2
         this.dialogPositionY = this.height - 200
 
         this.subTitle = this.scene.add.text(this.dialogPositionX, this.dialogPositionY,
                             '(subtiles)', { 
-                                backgroundColor: '#000',
                                 fill: '#fff',
                                 fontFamily: 'Sans Serif',
                                 align: 'center',
@@ -69,13 +70,28 @@ export class Level1 {
 
         this.subTitle.setDepth(100)
 
+        // Dessiner le contour autour du rectangle principal
+        this.stroke = this.scene.add.graphics()
+        this.stroke.lineStyle(5, 0xFFFFFF, 0.6); // Largeur, couleur et opacité du contour
+        this.stroke.strokeRoundedRect(this.dialogPositionX - this.subTitle.width / 2 - 5, this.dialogPositionY - this.subTitle.height - 5, this.subTitle.width + 10, this.subTitle.height + 10, 20); // Dessiner le contour
+        this.stroke.setAlpha(0)
+        this.stroke.setScrollFactor(0)
+        this.stroke.setDepth(99)
+        // Créer un rectangle arrondi en arrière-plan
+        this.graphics = this.scene.add.graphics()
+        this.graphics.fillStyle(0x000000, 0.6) // Couleur du rectangle avec une opacité de 0.7
+        this.graphics.fillRoundedRect(this.dialogPositionX - this.subTitle.width / 2, this.dialogPositionY - this.subTitle.height, this.subTitle.width, this.subTitle.height, 20)
+        this.graphics.setAlpha(0)
+        this.graphics.setScrollFactor(0)
+        this.graphics.setDepth(99)
+
         this.answerLeft = this.scene.add.text(this.width / 2 - 25, this.height + 50,
                             '(answer left)', { 
                                 backgroundColor: '#000',
                                 fill: '#fff',
                                 fontFamily: 'Sans Serif',
                                 align: 'right',
-                                padding: 10,
+                                padding: 20,
                                 fontSize: 20,
                                 wordWrap: { width: window.innerWidth - 40, useAdvancedWrap: true }
                             }).setScrollFactor(0).setOrigin(1,1).setAlpha(0)
@@ -87,7 +103,7 @@ export class Level1 {
                                 fill: '#fff',
                                 fontFamily: 'Sans Serif',
                                 align: 'left',
-                                padding: 10,
+                                padding: 20,
                                 fontSize: 20,
                                 wordWrap: { width: window.innerWidth - 40, useAdvancedWrap: true }
                             }).setScrollFactor(0).setOrigin(0,1).setAlpha(0)
@@ -98,86 +114,165 @@ export class Level1 {
     }
 
     showSubtiles(line) {
+        let clicked = false
         return new Promise((resolve, reject) => {
             this.subTitle.setText(line)
             this.subTitle.setAlpha(0)
+            this.stroke.setAlpha(0)
+            this.graphics.setAlpha(0)
+            // Mettre à jour la largeur du rectangle en fonction de la largeur du texte mis à jour
+            const newWidth = this.subTitle.width + 100; // Ajouter un padding supplémentaire pour le rectangle
+            const newHeight = this.subTitle.height; // Ajouter un padding supplémentaire pour le rectangle
+            
+            // Mettre à jour les dimensions et la position du rectangle
+            this.graphics.clear(); 
+            this.graphics.fillStyle(0x000000, 0.8);
+            this.graphics.fillRoundedRect(this.dialogPositionX - newWidth / 2, this.dialogPositionY - newHeight, newWidth, newHeight, 20);
+            this.stroke.clear();
+            this.stroke.lineStyle(3, 0xFFFFFF, 1);
+            this.stroke.strokeRoundedRect(this.dialogPositionX - newWidth / 2 - 3, this.dialogPositionY - newHeight - 3, newWidth + 5, newHeight + 5, 20);
+            
             this.tweens.add({
-                targets: this.subTitle,
-                y: this.dialogPositionY,
-                alpha: 0.7,
-                duration: 1000,
+                targets: this.graphics,
+                alpha: 1,
+                duration: 500,
                 hold: line.length * 35,
                 ease: 'Power2',
                 yoyo: true,
                 onComplete: () => {
-                    resolve()
+                    if(!clicked)
+                        resolve()
                 }
             })
+            this.tweens.add({
+                targets: this.stroke,
+                alpha: 1,
+                duration: 500,
+                hold: line.length * 35,
+                ease: 'Power2',
+                yoyo: true,
+                onComplete: () => {
+                    if(!clicked)
+                        resolve()
+                }
+            })
+            this.tweens.add({
+                targets: this.subTitle,
+                alpha: 1,
+                duration: 500,
+                hold: line.length * 35,
+                ease: 'Power2',
+                yoyo: true,
+                onComplete: () => {
+                    if(!clicked)
+                        resolve()
+                }
+            })
+
+            const clickHandler = () => {
+                clicked = true;
+                // Votre code pour passer rapidement à l'encart de dialogue suivant
+                // Par exemple, résoudre la promesse immédiatement pour passer à la suite
+                resolve();
+    
+                // Désactiver l'écouteur de clic une fois que l'utilisateur a cliqué pour passer
+                this.input.off('pointerdown', clickHandler);
+            };
+            
+            this.input.on('pointerdown', clickHandler);
         })
     }
 
     showQuestion(line, answers, npc) {
         return new Promise((resolve, reject) => {
-            this.subTitle.setText(line)
-            this.answerRight.setText(answers.right.text)
-            this.answerLeft.setText(answers.left.text)
-
+            this.subTitle.setText(line);
+            this.answerRight.setText(answers.right.text);
+            this.answerLeft.setText(answers.left.text);
+    
             this.answerLeft.off('pointerdown');
             this.answerRight.off('pointerdown');
-
-            if(typeof answers.left.callback !== 'undefined') {
-                this.answerLeft.on('pointerdown', answers.left.callback)
-            }else{
+    
+            if (typeof answers.left.callback !== 'undefined') {
+                this.answerLeft.on('pointerdown', answers.left.callback);
+            } else {
                 this.answerLeft.on('pointerdown', async () => {
-                    await this.hideAnswers()
-                    npc.readDialog(answers.left.linksTo)
-                })
+                    await this.hideAnswers();
+                    npc.readDialog(answers.left.linksTo);
+                });
             }
-
-            if(typeof answers.right.callback !== 'undefined') {
-                this.answerRight.on('pointerdown', answers.right.callback)
-            }else{
+    
+            if (typeof answers.right.callback !== 'undefined') {
+                this.answerRight.on('pointerdown', answers.right.callback);
+            } else {
                 this.answerRight.on('pointerdown', async () => {
-                    await this.hideAnswers()
-                    npc.readDialog(answers.right.linksTo)
-                })
+                    await this.hideAnswers();
+                    npc.readDialog(answers.right.linksTo);
+                });
             }
-
-            this.tweens.add({
+    
+            this.subTitle.setAlpha(0);
+            this.stroke.setAlpha(0);
+            this.graphics.setAlpha(0);
+    
+            // Variables pour garder une référence aux tweens de la question
+            let subTitleTween, answerLeftTween, answerRightTween, graphicsTween, strokeTween;
+    
+            const onCompleteHandler = () => {
+                // Résoudre la promesse uniquement si tous les tweens de la question actuelle sont terminés
+                if (subTitleTween.isPlaying() || answerLeftTween.isPlaying() || answerRightTween.isPlaying() || graphicsTween.isPlaying() || strokeTween.isPlaying()) {
+                    return;
+                }
+    
+                resolve();
+            };
+    
+            // Tweens pour afficher le dialogue et les réponses
+            subTitleTween = this.tweens.add({
                 targets: this.subTitle,
                 y: this.dialogPositionY,
-                alpha: 0.7,
+                alpha: 1,
                 duration: 500,
                 ease: 'Power2',
-                onComplete: () => {
-                    resolve()
-                }
-            })
-            
-            this.tweens.add({
+                onComplete: onCompleteHandler
+            });
+    
+            answerLeftTween = this.tweens.add({
                 targets: this.answerLeft,
                 y: this.dialogPositionY + 100,
                 alpha: 0.7,
                 duration: 500,
                 ease: 'Power2',
-                onComplete: () => {
-                    resolve()
-                }
-            })
-
-            this.tweens.add({
+                onComplete: onCompleteHandler
+            });
+    
+            answerRightTween = this.tweens.add({
                 targets: this.answerRight,
-                y: this.dialogPositionY +100,
+                y: this.dialogPositionY + 100,
                 alpha: 0.7,
                 duration: 500,
                 ease: 'Power2',
-                onComplete: () => {
-                    resolve()
-                }
-            })
-        })
+                onComplete: onCompleteHandler
+            });
+    
+            graphicsTween = this.tweens.add({
+                targets: this.graphics,
+                alpha: 1,
+                duration: 500,
+                ease: 'Power2',
+                onComplete: onCompleteHandler
+            });
+    
+            strokeTween = this.tweens.add({
+                targets: this.stroke,
+                alpha: 1,
+                duration: 500,
+                ease: 'Power2',
+                onComplete: onCompleteHandler
+            });
+        });
     }
-
+    
+    
     hideAnswers() {
         return new Promise((resolve, reject) => {
             this.scene.audio.dialogLowSound.play()

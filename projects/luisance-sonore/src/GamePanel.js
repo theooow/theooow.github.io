@@ -27,15 +27,15 @@ export class GamePanel {
                 mode: Phaser.Scale.RESIZE,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
                 parent: 'game-panel',
-                width: SIZE_WIDTH_SCREEN * window.devicePixelRatio,
-                height: SIZE_HEIGHT_SCREEN * window.devicePixelRatio,
+                width: SIZE_WIDTH_SCREEN * devicePixelRatio,
+                height: SIZE_HEIGHT_SCREEN * devicePixelRatio,
                 min: {
-                    width: MIN_SIZE_WIDTH_SCREEN,
-                    height: MIN_SIZE_HEIGHT_SCREEN
+                    width: MIN_SIZE_WIDTH_SCREEN * devicePixelRatio,
+                    height: MIN_SIZE_HEIGHT_SCREEN * devicePixelRatio
                 },
                 max: {
-                    width: MAX_SIZE_WIDTH_SCREEN,
-                    height: MAX_SIZE_HEIGHT_SCREEN
+                    width: MAX_SIZE_WIDTH_SCREEN * devicePixelRatio,
+                    height: MAX_SIZE_HEIGHT_SCREEN * devicePixelRatio
                 }
             },
             scene: [
