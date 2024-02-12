@@ -10,7 +10,7 @@ export class OldNPC extends Base {
         this.dialogs = {
             hello: {
                 question: true,
-                say:["Bonjour jeune homme, je suis un vieux monsieur", "Je peux vous aider à trouver votre chemin", "Mais avant, je dois vous poser une question", "Quelle est la couleur du cheval blanc de Napoléon ?"],
+                say:["Si tu veux trouver ce que tu cherches, ne dévie jamais du chemin. Ne regarde pas derrière toi et avance sans peur. La Clef de la Luisance Sonore t’attends au bout de la route du temps… ", "Je peux vous aider à trouver votre chemin", "Mais avant, je dois vous poser une question", "Quelle est la couleur du cheval blanc de Napoléon ?"],
                 answers: {
                     left: {
                         text: "Blanc",

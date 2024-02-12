@@ -6,7 +6,7 @@ import {GameScene} from './scenes/GameScene'
 
 // Aspect Ratio 16:9 - Portrait
 const MAX_SIZE_WIDTH_SCREEN = 1920
-const MAX_SIZE_HEIGHT_SCREEN = 1080
+const MAX_SIZE_HEIGHT_SCREEN = 3000
 const MIN_SIZE_WIDTH_SCREEN = 270
 const MIN_SIZE_HEIGHT_SCREEN = 480
 const SIZE_WIDTH_SCREEN = 540

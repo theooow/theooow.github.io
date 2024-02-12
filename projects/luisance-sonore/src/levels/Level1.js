@@ -54,7 +54,7 @@ export class Level1 {
         this.map.setCollisionBetween(0, 200, true, true, this.worldLayer)
 
         this.dialogPositionX = this.width / 2
-        this.dialogPositionY = this.height - this.scene.oldMan.height - 200
+        this.dialogPositionY = this.height - 200
 
         this.subTitle = this.scene.add.text(this.dialogPositionX, this.dialogPositionY,
                             '(subtiles)', { 
@@ -62,7 +62,7 @@ export class Level1 {
                                 fill: '#fff',
                                 fontFamily: 'Sans Serif',
                                 align: 'center',
-                                padding: 10,
+                                padding: 50,
                                 fontSize: 20,
                                 wordWrap: { width: window.innerWidth/1.5 - 40, useAdvancedWrap: true }
                             }).setScrollFactor(0).setOrigin(0.5, 1).setAlpha(0)
@@ -100,11 +100,11 @@ export class Level1 {
     showSubtiles(line) {
         return new Promise((resolve, reject) => {
             this.subTitle.setText(line)
-            this.subTitle.setAlpha(1)
+            this.subTitle.setAlpha(0)
             this.tweens.add({
                 targets: this.subTitle,
                 y: this.dialogPositionY,
-                alpha: 1,
+                alpha: 0.7,
                 duration: 1000,
                 hold: line.length * 35,
                 ease: 'Power2',
@@ -146,8 +146,8 @@ export class Level1 {
             this.tweens.add({
                 targets: this.subTitle,
                 y: this.dialogPositionY,
-                alpha: 1,
-                duration: 1000,
+                alpha: 0.7,
+                duration: 500,
                 ease: 'Power2',
                 onComplete: () => {
                     resolve()
@@ -157,8 +157,8 @@ export class Level1 {
             this.tweens.add({
                 targets: this.answerLeft,
                 y: this.dialogPositionY + 100,
-                alpha: 1,
-                duration: 1000,
+                alpha: 0.7,
+                duration: 500,
                 ease: 'Power2',
                 onComplete: () => {
                     resolve()
@@ -168,8 +168,8 @@ export class Level1 {
             this.tweens.add({
                 targets: this.answerRight,
                 y: this.dialogPositionY +100,
-                alpha: 1,
-                duration: 1000,
+                alpha: 0.7,
+                duration: 500,
                 ease: 'Power2',
                 onComplete: () => {
                     resolve()
@@ -190,9 +190,8 @@ export class Level1 {
             })
             this.tweens.add({
                 targets: this.subTitle,
-                y: this.height + 50,
                 alpha: 0,
-                duration: 1000,
+                duration: 500,
                 ease: 'Power2',
                 onComplete: () => {
                     resolve()

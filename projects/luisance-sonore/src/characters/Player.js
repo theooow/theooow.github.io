@@ -17,6 +17,7 @@ export class Player extends Base {
         this.isClicling = false;
         this.isTalking = false;
         this.swipeDirection = null;
+        this.eventStart = true;
 
         this.scene.anims.create({
             key: 'left',
@@ -38,6 +39,17 @@ export class Player extends Base {
             repeat: -1
         });
         this.scene.cameras.main.startFollow(this, false, 0.2, 0.05, 0, 200)
+
+        this.dialogs = {
+            start: {
+                question: false,
+                say: ["Où suis-je ?.. Ma montre ne fonctionne plus..."]
+            },
+            end: {
+                question: false,
+                say: ["test"]
+            }
+        }
     }
 
     update(cursors) {
@@ -55,6 +67,12 @@ export class Player extends Base {
             this.anims.play('turn')
         }
         if (cursors.up.isDown && this.body.onFloor() || (this.swipeDirection == "up" && this.body.onFloor())) {
+            this.scene.audio.jumpSound.play()
+            this.body.setVelocityY(-400)
+        }
+
+        // If space is pressed, jump too
+        if (cursors.space.isDown && this.body.onFloor()) {
             this.scene.audio.jumpSound.play()
             this.body.setVelocityY(-400)
         }
@@ -88,6 +106,23 @@ export class Player extends Base {
         if((!this.scene.input.activePointer.isDown && !cursors.left.isDown && !cursors.right.isDown) || this.isTalking){
             this.body.setVelocityX(0);
             this.anims.play('turn');            
+        }
+
+    }
+
+    async readDialog(key, index = 0){
+        const line = this.dialogs[key].say[index]
+        this.isTalking = true
+        this.scene.audio.dialogSound.play()
+        await this.scene.level.showSubtiles(line)
+        if(typeof this.dialogs[key].say[index + 1] !== 'undefined'){
+            this.readDialog(key, index + 1)
+        }
+        else if(typeof this.dialogs[key].say[index + 2] === 'undefined' && this.dialogs[key].question){
+            const answer = await this.scene.level.showQuestion(line, this.dialogs[key].answers, this)
+        }else{
+            this.isTalking = false
+            this.scene.player.isTalking = false
         }
     }
 }

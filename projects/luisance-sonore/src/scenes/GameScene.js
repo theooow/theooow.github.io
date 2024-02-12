@@ -39,6 +39,7 @@ export class GameScene extends Scene {
       this.player.isTalking = true
       this.oldMan.readDialog('hello')
     })
+
     this.level = new Level1(this)
     
     this.physics.add.collider(this.player, this.level.worldLayer)
@@ -54,6 +55,10 @@ export class GameScene extends Scene {
   update() {
     const cursors = this.input.keyboard.createCursorKeys();
 
+    if(this.player.body.onFloor() && this.player.eventStart) {
+      this.player.readDialog('start')
+      this.player.eventStart = false
+    }
 
     this.clock.updateClock('forward');
     this.level.update()

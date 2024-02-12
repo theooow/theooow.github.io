@@ -39,7 +39,7 @@ export class Clock {
     }
 
     updateClock() {
-        const rotationAmount = 0.3; // You can adjust this value based on the speed of rotation
+        const rotationAmount = 0.1; // You can adjust this value based on the speed of rotation
 
         this.hourHand.angle = ((this.scene.player.body.x*rotationAmount)%360);
         this.minuteHand.angle = ((this.scene.player.body.x*rotationAmount)%360) * 12; // La minute a 12 fois plus de divisions que l'heure
