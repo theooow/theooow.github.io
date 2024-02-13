@@ -15,37 +15,33 @@ export class Level1 {
 
     create() {
 
-        // Calculate scaled dimensions based on device pixel ratio
-        const scaledWidth = this.width * window.devicePixelRatio;
-        const scaledHeight = this.height * window.devicePixelRatio;
-
         // Add a background image to our scene
-        this.sky = this.scene.add.tileSprite(0, 0, scaledWidth, scaledHeight, 'skyBackground')
+        this.sky = this.scene.add.tileSprite(0, 0, this.width, this.height, 'skyBackground')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
         this.scene.clock.createClock()
 
-        this.farClouds = this.scene.add.tileSprite(0, 0, scaledWidth, scaledHeight, 'clouds1')
+        this.farClouds = this.scene.add.tileSprite(0, 0, this.width, this.height, 'clouds1')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
 
-        this.mountainsBack = this.scene.add.tileSprite(0, 0, scaledWidth, scaledHeight, 'rocks')
+        this.mountainsBack = this.scene.add.tileSprite(0, 0, this.width, this.height, 'rocks')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
-        this.nearClouds = this.scene.add.tileSprite(0, 0, scaledWidth, scaledHeight, 'clouds2')
+        this.nearClouds = this.scene.add.tileSprite(0, 0, this.width, this.height, 'clouds2')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
                             
-        this.groundBack = this.scene.add.tileSprite(0, 0, scaledWidth, scaledHeight, 'ground1')
+        this.groundBack = this.scene.add.tileSprite(0, 0, this.width, this.height, 'ground1')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
-        this.groundMid = this.scene.add.tileSprite(0, 0, scaledWidth, scaledHeight, 'ground2')
+        this.groundMid = this.scene.add.tileSprite(0, 0, this.width, this.height, 'ground2')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
-        this.groundFront = this.scene.add.tileSprite(0, 0, scaledWidth, scaledHeight, 'ground3')
+        this.groundFront = this.scene.add.tileSprite(0, 0, this.width, this.height, 'ground3')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
@@ -53,8 +49,8 @@ export class Level1 {
 
         this.tileset = this.map.addTilesetImage('tileset', 'tiles')
         
-        this.worldLayer = this.map.createLayer('world', this.tileset, 0, scaledHeight / 4 - 200)
-        this.belowLayer = this.map.createLayer('below-player', this.tileset, 0, scaledHeight / 4 - 200)
+        this.worldLayer = this.map.createLayer('world', this.tileset, 0, this.height / 4 - 200)
+        this.belowLayer = this.map.createLayer('below-player', this.tileset, 0, this.height / 4 - 200)
         this.map.setCollisionBetween(0, 200, true, true, this.worldLayer)
 
         this.input = this.scene.input
@@ -69,7 +65,7 @@ export class Level1 {
                                 align: 'center',
                                 padding: 50,
                                 fontSize: 20,
-                                wordWrap: { width: (window.innerWidth/1.5 - 40 )* window.devicePixelRatio, useAdvancedWrap: true }
+                                wordWrap: { width: window.innerWidth/1.5 - 40, useAdvancedWrap: true }
                             }).setScrollFactor(0).setOrigin(0.5, 1).setAlpha(0)
 
         this.subTitle.setDepth(100)
@@ -77,7 +73,7 @@ export class Level1 {
         // Dessiner le contour autour du rectangle principal
         this.stroke = this.scene.add.graphics()
         this.stroke.lineStyle(5, 0xFFFFFF, 0.6); // Largeur, couleur et opacité du contour
-        this.stroke.strokeRoundedRect(this.dialogPositionX - this.subTitle.width / 2 - 5, this.dialogPositionY - this.subTitle.height - 5, (this.subTitle.width + 10)*window.devicePixelRatio, this.subTitle.height + 10, 20); // Dessiner le contour
+        this.stroke.strokeRoundedRect(this.dialogPositionX - this.subTitle.width / 2 - 5, this.dialogPositionY - this.subTitle.height - 5, this.subTitle.width + 10, this.subTitle.height + 10, 20); // Dessiner le contour
         this.stroke.setAlpha(0)
         this.stroke.setScrollFactor(0)
         this.stroke.setDepth(99)
