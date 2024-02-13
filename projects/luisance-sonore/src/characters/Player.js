@@ -5,7 +5,7 @@ export class Player extends Base {
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture);
         this.scene = scene;
-        this.body.setSize(250, 250);
+        this.body.setSize(150, 250);
         // reduce sprite size
         this.setScale(0.3);
         this.body.setBounce(0.2);
@@ -55,10 +55,10 @@ export class Player extends Base {
     update(cursors) {
         this.scene.input.addPointer(2) 
         // Keyboard controls
-        if (cursors.left.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX < this.scene.sys.scale.gameSize.width / 2)) {
+        if ((cursors.left.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX < this.scene.sys.scale.gameSize.width / 2) && !this.isTalking)) {
             this.body.setVelocityX(-this.playerSpeed)
             this.anims.play('left', true)
-        } else if (cursors.right.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX > this.scene.sys.scale.gameSize.width / 2)) {
+        } else if ((cursors.right.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX > this.scene.sys.scale.gameSize.width / 2) && !this.isTalking)) {
             this.body.setVelocityX(this.playerSpeed)
             this.anims.play('right', true)
         } else if (cursors.up.isUp && cursors.left.isUp && cursors.right.isUp) {
@@ -78,7 +78,7 @@ export class Player extends Base {
         }
 
         //If walking, playing sound
-        if(this.body.velocity.x != 0 && this.body.onFloor()) {
+        if(this.body.velocity.x != 0 && this.body.onFloor() && !this.isTalking) {
             if(!this.scene.audio.walkSound.isPlaying) {
                 this.scene.audio.walkSound.play()
             }
@@ -98,6 +98,7 @@ export class Player extends Base {
         }
 
         if(this.swipeDirection == "up" && this.body.onFloor()) {
+            this.scene.audio.jumpSound.play()
             this.body.setVelocityY(-400);
             this.swipeDirection = null;
         }

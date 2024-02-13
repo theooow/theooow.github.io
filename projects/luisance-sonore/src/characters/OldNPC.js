@@ -5,26 +5,35 @@ export class OldNPC extends Base {
     constructor(scene, x, y, texture){
         super(scene, x, y, texture)
         this.scene = scene
-        this.body.setSize(32, 48)
+        this.setScale(0.15)
+        this.body.setSize(350, 660)
         this.body.setImmovable(true)
         this.dialogs = {
             hello: {
                 question: true,
-                say:["Si tu veux trouver ce que tu cherches, ne dévie jamais du chemin. Ne regarde pas derrière toi et avance sans peur. La Clef de la Luisance Sonore t’attends au bout de la route du temps… ", "Je peux vous aider à trouver votre chemin", "Mais avant, je dois vous poser une question", "Quelle est la couleur du cheval blanc de Napoléon ?"],
+                say:["Tu es bien loin de chez toi... D’où viens-tu ?"],
                 answers: {
                     left: {
-                        text: "Blanc",
+                        text: "J’ai juste cliqué sur un lien bordel...",
                         linksTo: "next"
                     },
                     right: {
-                        text: "Noir",
-                        linksTo: "end"
+                        text: "",
+                        linksTo: "next"
                     }
                 }
             },
             next: {
-                question: true,
-                say:["Bravo, vous avez trouvé la bonne réponse"],
+                question: false,
+                say:["Tu viens d’atterrir au début de la route du temps...", 
+                    "Où finit le passé et où commence l’avenir ?",
+                    "L’histoire que tu t'apprêtes à vivre n'a pas de début ni de fin.",
+                    "Un même instant pouvant être à la fois présent et passé.",
+                    "Un lieu pouvant être à la fois ici et ailleurs. Loin et pourtant si près.",
+                    "Si tu veux trouver ce que tu cherches, ne dévie jamais du chemin.", 
+                    "Pourtant tu devras te perdre pour atteindre le portail de la célébration.",
+                    "Ne regarde pas derrière toi et avance sans peur. ",
+                    "La Clef de la Luisance Sonore t’attends au bout du chemin..."],
                 answers: {
                     left: {
                         text: "Merci",

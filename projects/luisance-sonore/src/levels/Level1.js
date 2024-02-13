@@ -136,7 +136,7 @@ export class Level1 {
                 targets: this.graphics,
                 alpha: 1,
                 duration: 500,
-                hold: line.length * 35,
+                hold: line.length * 40,
                 ease: 'Power2',
                 yoyo: true,
                 onComplete: () => {
@@ -148,7 +148,7 @@ export class Level1 {
                 targets: this.stroke,
                 alpha: 1,
                 duration: 500,
-                hold: line.length * 35,
+                hold: line.length * 40,
                 ease: 'Power2',
                 yoyo: true,
                 onComplete: () => {
@@ -160,7 +160,7 @@ export class Level1 {
                 targets: this.subTitle,
                 alpha: 1,
                 duration: 500,
-                hold: line.length * 35,
+                hold: line.length * 40,
                 ease: 'Power2',
                 yoyo: true,
                 onComplete: () => {
@@ -217,15 +217,6 @@ export class Level1 {
             // Variables pour garder une référence aux tweens de la question
             let subTitleTween, answerLeftTween, answerRightTween, graphicsTween, strokeTween;
     
-            const onCompleteHandler = () => {
-                // Résoudre la promesse uniquement si tous les tweens de la question actuelle sont terminés
-                if (subTitleTween.isPlaying() || answerLeftTween.isPlaying() || answerRightTween.isPlaying() || graphicsTween.isPlaying() || strokeTween.isPlaying()) {
-                    return;
-                }
-    
-                resolve();
-            };
-    
             // Tweens pour afficher le dialogue et les réponses
             subTitleTween = this.tweens.add({
                 targets: this.subTitle,
@@ -233,33 +224,44 @@ export class Level1 {
                 alpha: 1,
                 duration: 500,
                 ease: 'Power2',
-                onComplete: onCompleteHandler
+                onComplete: () => {
+                    resolve();
+                }
             });
     
-            answerLeftTween = this.tweens.add({
-                targets: this.answerLeft,
-                y: this.dialogPositionY + 100,
-                alpha: 0.7,
-                duration: 500,
-                ease: 'Power2',
-                onComplete: onCompleteHandler
-            });
-    
-            answerRightTween = this.tweens.add({
-                targets: this.answerRight,
-                y: this.dialogPositionY + 100,
-                alpha: 0.7,
-                duration: 500,
-                ease: 'Power2',
-                onComplete: onCompleteHandler
-            });
+            if(this.answerLeft.text != '') {
+                answerLeftTween = this.tweens.add({
+                    targets: this.answerLeft,
+                    y: this.dialogPositionY + 100,
+                    alpha: 0.7,
+                    duration: 500,
+                    ease: 'Power2',
+                    onComplete: () => {
+                        resolve();
+                    }
+                });
+            }
+            if(this.answerRight.text != '') {
+                answerRightTween = this.tweens.add({
+                    targets: this.answerRight,
+                    y: this.dialogPositionY + 100,
+                    alpha: 0.7,
+                    duration: 500,
+                    ease: 'Power2',
+                    onComplete: () => {
+                        resolve();
+                    }
+                });
+            }
     
             graphicsTween = this.tweens.add({
                 targets: this.graphics,
                 alpha: 1,
                 duration: 500,
                 ease: 'Power2',
-                onComplete: onCompleteHandler
+                onComplete: () => {
+                    resolve();
+                }
             });
     
             strokeTween = this.tweens.add({
@@ -267,7 +269,9 @@ export class Level1 {
                 alpha: 1,
                 duration: 500,
                 ease: 'Power2',
-                onComplete: onCompleteHandler
+                onComplete: () => {
+                    resolve();
+                }
             });
         });
     }
