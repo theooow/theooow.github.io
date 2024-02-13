@@ -44,12 +44,23 @@ export class Player extends Base {
             start: {
                 question: false,
                 say: ["Où suis-je ?.. Ma montre ne fonctionne plus..."]
-            },
-            end: {
-                question: false,
-                say: ["test"]
             }
         }
+
+        this.preFX.setPadding(32)
+        const fx = this.preFX.addGlow();
+        this.scene.tweens.add({
+            targets: fx,
+            outerStrength: 18,
+            alpha: 0.8,
+            yoyo: true,
+            loop: 1,
+            duration: 1000,
+            ease: 'sine.inout',
+            onComplete: () => {
+                fx.destroy()
+            }
+        });
     }
 
     update(cursors) {

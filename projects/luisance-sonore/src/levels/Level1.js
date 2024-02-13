@@ -240,6 +240,9 @@ export class Level1 {
                         resolve();
                     }
                 });
+            }else{
+                // center the right answer if there is no left answer
+                this.answerRight.setX(this.width / 2)
             }
             if(this.answerRight.text != '') {
                 answerRightTween = this.tweens.add({
@@ -252,6 +255,10 @@ export class Level1 {
                         resolve();
                     }
                 });
+            }else{
+                // center the left answer and redraw it if there is no right answer
+                this.answerLeft.setX(this.width / 2)
+                this.answerLeft.setOrigin(0.5, 1)
             }
     
             graphicsTween = this.tweens.add({

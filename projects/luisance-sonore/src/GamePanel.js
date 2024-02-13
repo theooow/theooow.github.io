@@ -47,6 +47,12 @@ export class GamePanel {
             ],
             dom: {
                 createContainer: true
+            },
+            fx: {
+                glow: {
+                    distance: 32,
+                    quality: 0.8
+                }
             }
         }
         this.game = new Game(config)

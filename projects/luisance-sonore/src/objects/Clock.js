@@ -13,7 +13,6 @@ export class Clock {
 
         // Draw the clock face
         this.clockFace = this.scene.add.circle(400, 300, 150, 0xcccccc);
-
         
         this.clockGroup.add(this.clockFace);
         // Draw hour and minute needles
