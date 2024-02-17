@@ -12,8 +12,11 @@ import ground2 from '../assets/images/ground_2.png'
 import ground3 from '../assets/images/ground_3.png'
 
 
-import tiles from '../assets/images/tileset.png'
-import level1 from '../assets/tilemaps/luisance.json'
+import tiles from '../assets/images/tileset_final.png'
+import level1 from '../assets/luisance-map/map-luisance.json'
+
+import sign from '../assets/images/arrow_sign.png'
+import door from '../assets/images/anim-porte.png'
 
 import mainTheme from '../assets/audios/main.wav'
 import jumpSound from '../assets/audios/Jump.wav'
@@ -40,6 +43,8 @@ export class BootScene extends Scene {
 
     this.load.image('tiles', tiles)
     this.load.tilemapTiledJSON('map', level1)
+
+    this.load.image('sign', sign)
     
     this.load.spritesheet('dude', 
         spritesheet,
@@ -51,6 +56,11 @@ export class BootScene extends Scene {
         { frameWidth: 1000, frameHeight: 1000}
     )
 
+    this.load.spritesheet('door',
+        door,
+        { frameWidth: 600, frameHeight: 600}
+    )
+
     this.load.audio('mainTheme', mainTheme)
     this.load.audio('jumpSound', jumpSound)
     this.load.audio('dialogSound', dialogSound)
@@ -59,6 +69,13 @@ export class BootScene extends Scene {
   }
 
   create() {
+    // loading text
+    this.loadingText = this.add.text(0, 0, 'Loading...', { font: '48px Arial', fill: '#ffffff' })
+    // center the text
+    this.loadingText.x = this.cameras.main.width / 2 - this.loadingText.width / 2
+    this.loadingText.y = this.cameras.main.height / 2 - this.loadingText.height / 2
+
+    // Load the next scene
     this.scene.start('scene-game')
   }
 }

@@ -5,9 +5,10 @@ export class OldNPC extends Base {
     constructor(scene, x, y, texture){
         super(scene, x, y, texture)
         this.scene = scene
-        this.setScale(0.15)
+        this.setScale(0.1)
         this.body.setSize(350, 660)
         this.body.setImmovable(true)
+        this.hasTalked = false
         this.dialogs = {
             hello: {
                 question: true,

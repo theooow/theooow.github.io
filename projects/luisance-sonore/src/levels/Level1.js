@@ -26,32 +26,36 @@ export class Level1 {
                             .setScrollFactor(0)
 
 
-        this.mountainsBack = this.scene.add.tileSprite(0, 0, this.width, this.height, 'rocks')
+        this.mountainsBack = this.scene.add.tileSprite(0, -100, this.width, this.height, 'rocks')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
         this.nearClouds = this.scene.add.tileSprite(0, 0, this.width, this.height, 'clouds2')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
                             
-        this.groundBack = this.scene.add.tileSprite(0, 0, this.width, this.height, 'ground1')
+        this.groundBack = this.scene.add.tileSprite(0, -100, this.width, this.height, 'ground1')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
-        this.groundMid = this.scene.add.tileSprite(0, 0, this.width, this.height, 'ground2')
+        this.groundMid = this.scene.add.tileSprite(0, -100, this.width, this.height, 'ground2')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
-        this.groundFront = this.scene.add.tileSprite(0, 0, this.width, this.height, 'ground3')
+        this.groundFront = this.scene.add.tileSprite(0, -100, this.width, this.height, 'ground3')
                             .setOrigin(0, 0)
                             .setScrollFactor(0)
 
         this.map = this.scene.make.tilemap({ key: 'map' })
 
-        this.tileset = this.map.addTilesetImage('tileset', 'tiles')
+        this.tileset = this.map.addTilesetImage('tileset_final', 'tiles')
         
         this.worldLayer = this.map.createLayer('world', this.tileset, 0, this.height / 4 - 200)
         this.belowLayer = this.map.createLayer('below-player', this.tileset, 0, this.height / 4 - 200)
         this.map.setCollisionBetween(0, 200, true, true, this.worldLayer)
+
+        this.sign = this.scene.add.image(1600, this.height - 260, 'sign')
+        this.sign.setOrigin(0, 0)
+        this.sign.setScale(0.05)
 
         this.input = this.scene.input
 
@@ -110,12 +114,19 @@ export class Level1 {
         this.answerRight.setInteractive()
         this.answerLeft.setDepth(100)
         this.answerRight.setDepth(100)
-
     }
 
     showSubtiles(line) {
         let clicked = false
         return new Promise((resolve, reject) => {
+
+            let resolved = false;
+            const onCompleteHandler = () => {
+                if (!resolved) {
+                    resolve();
+                    resolved = true;
+                }
+            };
             this.subTitle.setText(line)
             this.subTitle.setAlpha(0)
             this.stroke.setAlpha(0)
@@ -140,8 +151,8 @@ export class Level1 {
                 ease: 'Power2',
                 yoyo: true,
                 onComplete: () => {
-                    if(!clicked)
-                        resolve()
+                    if(clicked) return
+                    onCompleteHandler()
                 }
             })
             this.tweens.add({
@@ -152,8 +163,8 @@ export class Level1 {
                 ease: 'Power2',
                 yoyo: true,
                 onComplete: () => {
-                    if(!clicked)
-                        resolve()
+                    if(clicked) return
+                    onCompleteHandler()
                 }
             })
             this.tweens.add({
@@ -164,22 +175,22 @@ export class Level1 {
                 ease: 'Power2',
                 yoyo: true,
                 onComplete: () => {
-                    if(!clicked)
-                        resolve()
+                    if(clicked) return
+                    onCompleteHandler()
                 }
             })
 
             const clickHandler = () => {
-                clicked = true;
-                // Votre code pour passer rapidement à l'encart de dialogue suivant
-                // Par exemple, résoudre la promesse immédiatement pour passer à la suite
-                resolve();
-    
-                // Désactiver l'écouteur de clic une fois que l'utilisateur a cliqué pour passer
-                this.input.off('pointerdown', clickHandler);
+                if (!clicked && !resolved) {
+                    clicked = true;
+                    resolve();
+                    resolved = true;
+                    this.input.off('pointerdown', clickHandler);
+                }
             };
             
             this.input.on('pointerdown', clickHandler);
+
         })
     }
 

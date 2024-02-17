@@ -5,6 +5,7 @@ import {Level1} from '../levels/Level1'
 
 import { OldNPC } from '../characters/OldNPC'
 import { Clock } from '../objects/Clock'
+import { Door } from '../objects/Door'
 
 export class GameScene extends Scene {
 
@@ -27,24 +28,39 @@ export class GameScene extends Scene {
     this.audio.walkSound.loop = true
 
     this.clock = new Clock(this);
+    this.door = new Door(this)
 
-    this.player = this.physics.add.existing(new Player(this, 100, 0, 'dude'))
-    this.player.setDepth(1)
+
+    this.player = this.physics.add.existing(new Player(this, 1000, 0, 'dude'))
+    this.player.setDepth(2)
     
-    this.oldMan = this.physics.add.existing(new OldNPC(this, 500, 0, 'oldMan'))
+    this.oldMan = this.physics.add.existing(new OldNPC(this, 1500, 0, 'oldMan'))
     this.oldMan.setDepth(1)
     this.oldMan.setInteractive()
-    this.oldMan.on('pointerdown', () => {
-      if(this.oldMan.isTalking) return
-      this.player.isTalking = true
-      this.oldMan.readDialog('hello')
+    // Si les hitbox se touchent, le joueur et le vieux se parlent
+    this.physics.add.overlap(this.player, this.oldMan, () => {
+      if(!this.oldMan.hasTalked){
+        this.player.isTalking = true
+        this.oldMan.hasTalked = true
+        this.oldMan.readDialog('hello')
+      }
+    })
+
+    this.door.door.setInteractive()
+    this.physics.add.overlap(this.player, this.door.door, () => {
+      // Off all sounds
+      for (const key in this.audio) {
+        this.audio[key].stop()
+      }
+      this.scene.stop('scene-game')
+      this.scene.start('scene-end')
     })
 
     this.level = new Level1(this)
     
     this.physics.add.collider(this.player, this.level.worldLayer)
     this.physics.add.collider(this.oldMan, this.level.worldLayer)
-    this.physics.add.collider(this.player, this.oldMan)
+    // this.physics.add.collider(this.player, this.oldMan)
 
     // Create a helper object for our arrow keys 
     this.cursors = this.input.keyboard.createCursorKeys()

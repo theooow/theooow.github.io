@@ -7,7 +7,7 @@ export class Player extends Base {
         this.scene = scene;
         this.body.setSize(150, 250);
         // reduce sprite size
-        this.setScale(0.3);
+        this.setScale(0.2);
         this.body.setBounce(0.2);
         this.body.setGravityY(300);
         this.body.setDragX(1000);

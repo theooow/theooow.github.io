@@ -3,6 +3,7 @@ import Phaser, {Game} from 'phaser'
 import {TitleScene} from './scenes/TitleScene'
 import {BootScene} from './scenes/BootScene'
 import {GameScene} from './scenes/GameScene'
+import { EndScene } from './scenes/EndScene'
 
 // Aspect Ratio 16:9 - Portrait
 const MAX_SIZE_WIDTH_SCREEN = 1920
@@ -43,7 +44,8 @@ export class GamePanel {
             scene: [
                 TitleScene,
                 BootScene, 
-                GameScene
+                GameScene,
+                EndScene
             ],
             dom: {
                 createContainer: true
