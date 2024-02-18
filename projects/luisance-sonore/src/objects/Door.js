@@ -10,12 +10,12 @@ export class Door {
 
     createDoor() {
 
-        this.door = this.scene.add.sprite(2500, 370, 'door');
+        this.door = this.scene.add.sprite(2500, 0, 'door');
         this.door.setInteractive();
         this.door.setDepth(1);
         this.door.setScale(0.5);
         this.scene.physics.world.enable(this.door);
-        this.door.body.setAllowGravity(false);
+        this.door.body.setGravityY(300);
         this.door.body.setImmovable(true);
         this.door.setOrigin(0.5, 0.5);
         this.door.body.setSize(50, 600);

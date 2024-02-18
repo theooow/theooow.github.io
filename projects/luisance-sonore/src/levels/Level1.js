@@ -53,9 +53,14 @@ export class Level1 {
         this.belowLayer = this.map.createLayer('below-player', this.tileset, 0, this.height / 4 - 200)
         this.map.setCollisionBetween(0, 200, true, true, this.worldLayer)
 
-        this.sign = this.scene.add.image(1600, this.height - 260, 'sign')
+        this.sign = this.scene.add.image(1600, 0, 'sign')
         this.sign.setOrigin(0, 0)
         this.sign.setScale(0.05)
+        // hitbox for the sign
+        // Gravity for sign
+        this.scene.physics.world.enable(this.sign)
+        this.sign.body.setGravityY(300)
+        this.scene.physics.add.collider(this.sign, this.worldLayer)
 
         this.input = this.scene.input
 
@@ -185,7 +190,7 @@ export class Level1 {
                     clicked = true;
                     resolve();
                     resolved = true;
-                    this.input.off('pointerdown', clickHandler);
+                    // this.input.off('pointerdown', clickHandler);
                 }
             };
             

@@ -51,8 +51,8 @@ export class Player extends Base {
         const fx = this.preFX.addGlow();
         this.scene.tweens.add({
             targets: fx,
-            outerStrength: 18,
-            alpha: 0.8,
+            outerStrength: 12,
+            alpha: 0.6,
             yoyo: true,
             loop: 1,
             duration: 1000,

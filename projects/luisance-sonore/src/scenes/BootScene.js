@@ -2,6 +2,7 @@ import {Scene} from 'phaser'
 
 import spritesheet from '../assets/images/dude.png'
 import spritesheetOld from '../assets/images/mage.png'
+import marcelle from '../assets/images/marcelle.png'
 
 import skyBackground from '../assets/images/sky.png'
 import clouds1 from '../assets/images/clouds_1.png'
@@ -61,19 +62,34 @@ export class BootScene extends Scene {
         { frameWidth: 600, frameHeight: 600}
     )
 
+    this.load.image('marcelle', marcelle)
+
     this.load.audio('mainTheme', mainTheme)
     this.load.audio('jumpSound', jumpSound)
     this.load.audio('dialogSound', dialogSound)
     this.load.audio('dialogLowSound', dialogLowSound)
     this.load.audio('walkSound', walkSound)
+
+    this.loadingBar = this.add.graphics({fillStyle: {color: 0xffffff}})
+    this.load.on('progress', (percent) => {
+      this.loadingBar.fillRect(0, this.cameras.main.height / 2, this.cameras.main.width * percent, 50)
+    })
+
+    this.loadingText = this.make.text({
+      x: this.cameras.main.width / 2,
+      y: this.cameras.main.height / 2 - 50,
+      text: 'Loading...',
+      style: {
+        font: '20px monospace',
+        fill: '#ffffff'
+      }
+    })
+    this.loadingText.setOrigin(0.5, 0.5)
+    
+    
   }
 
   create() {
-    // loading text
-    this.loadingText = this.add.text(0, 0, 'Loading...', { font: '48px Arial', fill: '#ffffff' })
-    // center the text
-    this.loadingText.x = this.cameras.main.width / 2 - this.loadingText.width / 2
-    this.loadingText.y = this.cameras.main.height / 2 - this.loadingText.height / 2
 
     // Load the next scene
     this.scene.start('scene-game')

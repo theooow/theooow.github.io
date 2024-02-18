@@ -6,6 +6,7 @@ import {Level1} from '../levels/Level1'
 import { OldNPC } from '../characters/OldNPC'
 import { Clock } from '../objects/Clock'
 import { Door } from '../objects/Door'
+import { Marcelle } from '../characters/Marcelle'
 
 export class GameScene extends Scene {
 
@@ -49,17 +50,44 @@ export class GameScene extends Scene {
     this.door.door.setInteractive()
     this.physics.add.overlap(this.player, this.door.door, () => {
       // Off all sounds
-      for (const key in this.audio) {
-        this.audio[key].stop()
-      }
+      this.audio.mainTheme.stop()
+      this.audio.jumpSound.stop()
+      this.audio.walkSound.stop()
+
+      this.player.isTalking = true
+
       this.scene.stop('scene-game')
       this.scene.start('scene-end')
     })
+
+    // Marcelle
+    this.marcelle = this.physics.add.existing(new Marcelle(this, 100, 0, 'marcelle'))
+    this.marcelle.setDepth(1)
+    this.marcelle.setInteractive()
+
+    this.physics.add.overlap(this.player, this.marcelle, () => {
+      if(this.marcelle.hasTalked == 0){
+        this.player.isTalking = true
+        this.marcelle.hasTalked = 1
+        this.marcelle.readDialog('hello')
+      }
+      if(this.marcelle.hasTalked == 1 && !this.player.isTalking){
+        this.player.isTalking = true
+        this.marcelle.hasTalked = 2
+        this.marcelle.readDialog('next')
+      }
+    })
+
+    // Gravity
+    this.physics.world.enable(this.marcelle)
+    this.marcelle.body.setGravityY(300)
 
     this.level = new Level1(this)
     
     this.physics.add.collider(this.player, this.level.worldLayer)
     this.physics.add.collider(this.oldMan, this.level.worldLayer)
+    this.physics.add.collider(this.door.door, this.level.worldLayer)
+    this.physics.add.collider(this.marcelle, this.level.worldLayer)
     // this.physics.add.collider(this.player, this.oldMan)
 
     // Create a helper object for our arrow keys 

@@ -3,14 +3,25 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map-luisance.json",
+    "activeFile": "level2.tmx",
     "expandedProjectPaths": [
-        "C:/Users/theoo/Documents/dev/perso/js/luisance/src/assets/luisance-map",
-        "."
+        ".",
+        "C:/Users/theoo/Documents/dev/perso/js/luisance/src/assets/luisance-map"
     ],
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
         "": {
+            "scaleInDock": 1
+        },
+        "level2.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 770,
+                "y": 638.3333333333333
+            }
+        },
+        "level2.tmx#tileset_final": {
             "scaleInDock": 1
         },
         "luisance.json": {
@@ -28,8 +39,8 @@
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 188,
-                "y": 599
+                "x": 182,
+                "y": 595
             }
         },
         "map-luisance.json#tileset": {
@@ -53,20 +64,21 @@
     },
     "last.exportedFilePath": "C:/Users/theoo/Documents/dev/theooow.github.io/projects/luisance-sonore/src/assets/luisance-map",
     "last.imagePath": "C:/Users/theoo/Documents/dev/theooow.github.io/projects/luisance-sonore/src/assets/images",
-    "map.fixedSize": false,
-    "map.height": 100,
+    "map.fixedSize": true,
+    "map.height": 75,
     "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 500,
+    "map.width": 100,
     "openFiles": [
-        "map-luisance.tmx",
-        "map-luisance.json"
+        "map-luisance.json",
+        "level2.tmx"
     ],
     "project": "luisance-sonore.tiled-project",
     "recentFiles": [
         "map-luisance.json",
+        "level2.tmx",
         "map-luisance.tmx",
         "luisance.json",
         "tileset_final.tsx"
