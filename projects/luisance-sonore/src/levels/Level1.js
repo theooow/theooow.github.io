@@ -185,16 +185,16 @@ export class Level1 {
                 }
             })
 
-            const clickHandler = () => {
-                if (!clicked && !resolved) {
-                    clicked = true;
-                    resolve();
-                    resolved = true;
-                    // this.input.off('pointerdown', clickHandler);
-                }
-            };
+            // const clickHandler = () => {
+            //     if (!clicked && !resolved) {
+            //         clicked = true;
+            //         resolve();
+            //         resolved = true;
+            //         // this.input.off('pointerdown', clickHandler);
+            //     }
+            // };
             
-            this.input.on('pointerdown', clickHandler);
+            // this.input.on('pointerdown', clickHandler);
 
         })
     }
