@@ -2,6 +2,8 @@ import {Scene} from 'phaser'
 
 import {Player} from '../characters/Player'
 
+import { Portal } from '../objects/Portal'
+
 import loop2 from '../assets/audios/loop2.wav'
 
 import level2 from '../assets/luisance-map/level2.json'
@@ -30,12 +32,12 @@ export class EndScene extends Scene {
           }
         })
         this.loadingText.setOrigin(0.5, 0.5)
+
+        
+
     }
 
     create() {
-        this.add.text(100, 100, 'You won', { fontSize: '64px', fill: '#fff' })
-        this.add.text(100, 200, 'Press space to restart', { fontSize: '32px', fill: '#fff' })
-
         this.audio = {
             loop2: this.sound.add('loop2', {loop: true}),
             jumpSound: this.sound.add('jumpSound'),
@@ -58,11 +60,11 @@ export class EndScene extends Scene {
         this.player = this.physics.add.existing(new Player(this, 800, 600, 'dude'))
         this.player.setDepth(2)
         this.physics.add.collider(this.player, this.layer)
-        
-        this.input.keyboard.on('keydown-SPACE', () => {
-            this.scene.start('scene-game')
-        })
+    
 
+        this.portal = new Portal(this)
+        this.physics.add.collider(this.portal.portal, this.layer)
+        
         this.cursors = this.input.keyboard.createCursorKeys()
 
     }

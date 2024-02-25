@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level2.tmx",
+    "activeFile": "map-luisance.json",
     "expandedProjectPaths": [
-        ".",
-        "C:/Users/theoo/Documents/dev/perso/js/luisance/src/assets/luisance-map"
+        "C:/Users/theoo/Documents/dev/perso/js/luisance/src/assets/luisance-map",
+        "."
     ],
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
@@ -17,8 +17,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 662.6666666666665,
-                "y": 600.6666666666667
+                "x": 799.3333333333333,
+                "y": 599.3333333333333
             }
         },
         "level2.tmx#tileset_final": {
@@ -36,11 +36,11 @@
             "scaleInDock": 1
         },
         "map-luisance.json": {
-            "scale": 0.5,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 3614,
-                "y": 181
+                "x": 3403,
+                "y": 360.5
             }
         },
         "map-luisance.json#tileset": {
@@ -78,8 +78,8 @@
     "project": "luisance-sonore.tiled-project",
     "recentFiles": [
         "map-luisance.json",
-        "map-luisance.tmx",
         "level2.tmx",
+        "map-luisance.tmx",
         "luisance.json",
         "tileset_final.tsx"
     ],

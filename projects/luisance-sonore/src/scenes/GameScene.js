@@ -7,6 +7,7 @@ import { OldNPC } from '../characters/OldNPC'
 import { Clock } from '../objects/Clock'
 import { Door } from '../objects/Door'
 import { Marcelle } from '../characters/Marcelle'
+import { Portal } from '../objects/Portal'
 
 export class GameScene extends Scene {
 
@@ -24,7 +25,6 @@ export class GameScene extends Scene {
     }
 
     this.audio.mainTheme.loop = true
-    this.audio.mainTheme.volume = 0.6
     this.audio.jumpSound.volume = 0.5
     this.audio.walkSound.loop = true
 

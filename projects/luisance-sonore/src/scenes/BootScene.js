@@ -19,6 +19,8 @@ import level1 from '../assets/luisance-map/map-luisance.json'
 import sign from '../assets/images/arrow_sign.png'
 import darsign from '../assets/images/darmanin_sign.png'
 import door from '../assets/images/anim-porte.png'
+import portal from '../assets/images/anim-portal.png'
+
 
 import mainTheme from '../assets/audios/main.wav'
 import jumpSound from '../assets/audios/Jump.wav'
@@ -63,6 +65,8 @@ export class BootScene extends Scene {
         door,
         { frameWidth: 600, frameHeight: 600}
     )
+
+    this.load.spritesheet('portal', portal, { frameWidth: 500, frameHeight: 500 })
 
     this.load.image('marcelle', marcelle)
 

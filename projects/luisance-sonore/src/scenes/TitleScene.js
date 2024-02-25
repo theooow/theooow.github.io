@@ -2,6 +2,8 @@ import { Scene } from 'phaser'
 
 import titleScreen from '../assets/images/titlescreen.png'
 
+import music from '../assets/audios/title.wav'
+
 export class TitleScene extends Scene {
 
     constructor() {
@@ -12,9 +14,15 @@ export class TitleScene extends Scene {
         this.load.image('titleScreen', titleScreen)
         this.width = this.game.screenBaseSize.width
         this.height = this.game.screenBaseSize.height
+
+        this.load.audio('music', music)
+
     }
     
     create() {
+        this.music = this.sound.add('music', {loop: true})
+
+        this.music.play()
         this.add.image(0, 0, 'titleScreen').setOrigin(0, 0)
 
         const text = this.width > 400 ? 'Click to start' : 'Tap to start'
@@ -29,6 +37,7 @@ export class TitleScene extends Scene {
             .on('pointerover', () => button.setStyle({ backgroundColor: '#f39c12' }))
             .on('pointerout', () => button.setStyle({ backgroundColor: '#111' }))
             .on('pointerdown', () => {
+                this.music.stop()
                 this.scene.start('scene-boot')
             })
     }

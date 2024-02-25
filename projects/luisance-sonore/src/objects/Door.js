@@ -10,7 +10,7 @@ export class Door {
 
     createDoor() {
 
-        this.door = this.scene.add.sprite(4800, 0, 'door');
+        this.door = this.scene.add.sprite(5200, 0, 'door');
         this.door.setInteractive();
         this.door.setDepth(1);
         this.door.setScale(0.5);

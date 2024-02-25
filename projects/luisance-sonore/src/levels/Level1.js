@@ -62,13 +62,15 @@ export class Level1 {
         this.sign.body.setGravityY(300)
         this.scene.physics.add.collider(this.sign, this.worldLayer)
 
-        this.darsign = this.scene.add.image(3500, 0, 'darsign')
+        this.darsign = this.scene.add.image(3385, 0, 'darsign')
         this.darsign.setOrigin(0, 0)
-        this.darsign.setScale(0.05)
+        this.darsign.setScale(0.1)
+
         // hitbox for the sign
         // Gravity for sign
         this.scene.physics.world.enable(this.darsign)
         this.darsign.body.setGravityY(300)
+        this.darsign.body.setSize(10, 600)
         this.scene.physics.add.collider(this.darsign, this.worldLayer)
 
 
