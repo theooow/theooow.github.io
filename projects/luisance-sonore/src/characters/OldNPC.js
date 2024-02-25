@@ -12,7 +12,7 @@ export class OldNPC extends Base {
         this.dialogs = {
             hello: {
                 question: true,
-                say:["Tu es bien loin de chez toi... D’où viens-tu ?"],
+                say:["Bienvenue sur la route du temps..."],
                 answers: {
                     left: {
                         text: "J’ai juste cliqué sur un lien bordel...",
@@ -26,25 +26,10 @@ export class OldNPC extends Base {
             },
             next: {
                 question: false,
-                say:["Tu viens d’atterrir au début de la route du temps...", 
-                    "Où finit le passé et où commence l’avenir ?",
-                    "L’histoire que tu t'apprêtes à vivre n'a pas de début ni de fin.",
-                    "Un même instant pouvant être à la fois présent et passé.",
-                    "Un lieu pouvant être à la fois ici et ailleurs. Loin et pourtant si près.",
-                    "Si tu veux trouver ce que tu cherches, ne dévie jamais du chemin.", 
-                    "Pourtant tu devras te perdre pour atteindre le portail de la célébration.",
-                    "Ne regarde pas derrière toi et avance sans peur. ",
-                    "La Clef de la Luisance Sonore t’attends au bout du chemin..."],
-                answers: {
-                    left: {
-                        text: "Merci",
-                        linksTo: "luisance"
-                    },
-                    right: {
-                        text: "Je gagane quoi ?",
-                        linksTo: "luisance"
-                    }
-                }
+                say:["L’histoire que tu t'apprêtes à vivre n'a pas de début ni de fin.",
+                    "Il faudra te perdre pour atteindre le portail et retrouver la brèche.",
+                    "Ne regarde pas derrière toi et avance sans peur.",
+                    "La clef de la Luisance Sonore t’attends au bout du chemin..."],
             },
             end: {
                 question: true,

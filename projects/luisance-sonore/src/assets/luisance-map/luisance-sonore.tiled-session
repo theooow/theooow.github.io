@@ -14,11 +14,11 @@
             "scaleInDock": 1
         },
         "level2.tmx": {
-            "scale": 1.5,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 770,
-                "y": 638.3333333333333
+                "x": 662.6666666666665,
+                "y": 600.6666666666667
             }
         },
         "level2.tmx#tileset_final": {
@@ -37,10 +37,10 @@
         },
         "map-luisance.json": {
             "scale": 0.5,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 182,
-                "y": 595
+                "x": 3614,
+                "y": 181
             }
         },
         "map-luisance.json#tileset": {
@@ -53,8 +53,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 258.6666666666667,
-                "y": 371.66666666666663
+                "x": -938,
+                "y": 370.99999999999994
             }
         },
         "tileset_final.tsx": {
@@ -78,8 +78,8 @@
     "project": "luisance-sonore.tiled-project",
     "recentFiles": [
         "map-luisance.json",
-        "level2.tmx",
         "map-luisance.tmx",
+        "level2.tmx",
         "luisance.json",
         "tileset_final.tsx"
     ],

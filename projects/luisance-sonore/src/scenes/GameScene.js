@@ -35,7 +35,7 @@ export class GameScene extends Scene {
     this.player = this.physics.add.existing(new Player(this, 1000, 0, 'dude'))
     this.player.setDepth(2)
     
-    this.oldMan = this.physics.add.existing(new OldNPC(this, 1500, 0, 'oldMan'))
+    this.oldMan = this.physics.add.existing(new OldNPC(this, 2000, 0, 'oldMan'))
     this.oldMan.setDepth(1)
     this.oldMan.setInteractive()
     // Si les hitbox se touchent, le joueur et le vieux se parlent

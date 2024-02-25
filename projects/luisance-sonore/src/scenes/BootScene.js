@@ -17,6 +17,7 @@ import tiles from '../assets/images/tileset_final.png'
 import level1 from '../assets/luisance-map/map-luisance.json'
 
 import sign from '../assets/images/arrow_sign.png'
+import darsign from '../assets/images/darmanin_sign.png'
 import door from '../assets/images/anim-porte.png'
 
 import mainTheme from '../assets/audios/main.wav'
@@ -46,6 +47,7 @@ export class BootScene extends Scene {
     this.load.tilemapTiledJSON('map', level1)
 
     this.load.image('sign', sign)
+    this.load.image('darsign', darsign)
     
     this.load.spritesheet('dude', 
         spritesheet,
