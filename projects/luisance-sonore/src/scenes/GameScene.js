@@ -36,6 +36,7 @@ export class GameScene extends Scene {
     }
 
   create() {
+
     this.audio = {
       mainTheme: this.sound.add('mainTheme', {loop: true}),
       jumpSound: this.sound.add('jumpSound'),
@@ -43,6 +44,7 @@ export class GameScene extends Scene {
       dialogLowSound: this.sound.add('dialogLowSound'),
       walkSound: this.sound.add('walkSound')
     }
+
 
     this.audio.mainTheme.loop = true
     this.audio.jumpSound.volume = 0.5

@@ -6,7 +6,10 @@ export class OldNPC extends Base {
         super(scene, x, y, texture)
         this.scene = scene
         this.setScale(0.1)
-        this.body.setSize(350, 660)
+        this.body.setSize(350, 1660)
+        // La hitbox doit monter vers le haut
+        this.body.setOffset(0, -880)
+
         this.body.setImmovable(true)
         this.hasTalked = false
         this.dialogs = {
@@ -85,6 +88,15 @@ export class OldNPC extends Base {
         }else{
             this.isTalking = false
             this.scene.player.isTalking = false
+            // If the dialog is over, run animation to make disappear the npc
+            this.scene.tweens.add({
+                targets: this,
+                alpha: 0,
+                duration: 3000,
+                onComplete: () => {
+                    this.destroy()
+                }
+            })
         }
     }
 

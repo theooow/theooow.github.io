@@ -23,7 +23,7 @@ export class GamePanel {
                 default: 'arcade',
                 arcade: {
                     gravity: {y: 300},
-                    debug: true
+                    debug: false
                 }
             },
             scale: {

@@ -28,7 +28,7 @@ export class Player extends Base {
         
         this.scene.anims.create({
             key: 'turn',
-            frames: [ { key: 'dude', frame: 4 } ],
+            frames: [ { key: 'dude', frame: 5 } ],
             frameRate: 20
         });
         
@@ -44,6 +44,24 @@ export class Player extends Base {
             start: {
                 question: false,
                 say: ["Où suis-je ?.. Ma montre ne fonctionne plus..."]
+            },
+            end: {
+                question: true,
+                say: ["Veux tu prendre la luisance ?"],
+                answers: {
+                    left: {
+                        text: "Oui",
+                        callback: () => {
+                            window.open("https://www.shotgun.live/fr")
+                        }
+                    },
+                    right: {
+                        text: "Non",
+                        callback: () => {
+                            window.open("https://www.google.com/search?q=comment+revenir+%C3%A0+la+r%C3%A9alit%C3%A9&oq=comment+revenir+%C3%A0+la+r%C3%A9alit%C3%A9&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgATSAQg3MTI5ajBqMagCALACAA&sourceid=chrome&ie=UTF-8", '_blank');
+                        }
+                    }
+                }
             }
         }
 

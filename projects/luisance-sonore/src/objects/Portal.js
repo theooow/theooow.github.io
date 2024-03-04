@@ -10,7 +10,7 @@ export class Portal {
 
     createPortal() {
 
-        this.portal = this.scene.add.sprite(800, 200, 'portal');
+        this.portal = this.scene.add.sprite(800, 600, 'portal');
         this.portal.setInteractive();
         this.portal.setDepth(1);
         this.portal.setScale(0.5);
@@ -18,7 +18,7 @@ export class Portal {
         this.portal.body.setGravityY(300);
         this.portal.body.setImmovable(true);
         this.portal.setOrigin(0.5, 0.5);
-        this.portal.body.setSize(50, 600);
+        this.portal.body.setSize(500, 400);
 
 
         //Animation

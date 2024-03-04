@@ -1,79 +1,16 @@
 
 
-export class Level1 {
+export class Level2 {
     constructor(scene) {
         this.scene = scene
         this.width = this.scene.sys.scale.gameSize.width
         this.height = this.scene.sys.scale.gameSize.height
         this.tweens = this.scene.tweens
 
-        this.scene.cameras.main.setBounds(0, 0, 10000, this.height)
-        this.scene.physics.world.setBounds(0, 0, 10000, this.scene.sys.game.screenBaseSize.height)
-
         this.create()
     }
 
     create() {
-
-        // Add a background image to our scene
-        this.sky = this.scene.add.tileSprite(0, 0, this.width, this.height, 'skyBackground')
-                            .setOrigin(0, 0)
-                            .setScrollFactor(0)
-        this.scene.clock.createClock()
-
-        this.farClouds = this.scene.add.tileSprite(0, 0, this.width, this.height, 'clouds1')
-                            .setOrigin(0, 0)
-                            .setScrollFactor(0)
-
-
-        this.mountainsBack = this.scene.add.tileSprite(0, -100, this.width, this.height, 'rocks')
-                            .setOrigin(0, 0)
-                            .setScrollFactor(0)
-        this.nearClouds = this.scene.add.tileSprite(0, 0, this.width, this.height, 'clouds2')
-                            .setOrigin(0, 0)
-                            .setScrollFactor(0)
-                            
-        this.groundBack = this.scene.add.tileSprite(0, -100, this.width, this.height, 'ground1')
-                            .setOrigin(0, 0)
-                            .setScrollFactor(0)
-
-        this.groundMid = this.scene.add.tileSprite(0, -100, this.width, this.height, 'ground2')
-                            .setOrigin(0, 0)
-                            .setScrollFactor(0)
-
-        this.groundFront = this.scene.add.tileSprite(0, -100, this.width, this.height, 'ground3')
-                            .setOrigin(0, 0)
-                            .setScrollFactor(0)
-
-        this.map = this.scene.make.tilemap({ key: 'map' })
-
-        this.tileset = this.map.addTilesetImage('tileset_final', 'tiles')
-        
-        this.worldLayer = this.map.createLayer('world', this.tileset, 0, this.height / 4 - 200)
-        this.belowLayer = this.map.createLayer('below-player', this.tileset, 0, this.height / 4 - 200)
-        this.map.setCollisionBetween(0, 200, true, true, this.worldLayer)
-
-        this.sign = this.scene.add.image(860, 450, 'sign')
-        this.sign.setOrigin(0, 0)
-        this.sign.setScale(0.05)
-        // hitbox for the sign
-        // Gravity for sign
-        this.scene.physics.world.enable(this.sign)
-        this.sign.body.setGravityY(300)
-        this.scene.physics.add.collider(this.sign, this.worldLayer)
-
-        this.darsign = this.scene.add.image(3385, 0, 'darsign')
-        this.darsign.setOrigin(0, 0)
-        this.darsign.setScale(0.1)
-
-        // hitbox for the sign
-        // Gravity for sign
-        this.scene.physics.world.enable(this.darsign)
-        this.darsign.body.setGravityY(300)
-        this.darsign.body.setSize(10, 600)
-        this.scene.physics.add.collider(this.darsign, this.worldLayer)
-
-
         this.input = this.scene.input
 
         this.dialogPositionX = this.width / 2
@@ -336,22 +273,5 @@ export class Level1 {
 
 
     update() {
-        this.sky.tilePositionX = this.scene.cameras.main.scrollX * .1
-        this.farClouds.tilePositionX = this.scene.cameras.main.scrollX * .2
-        this.mountainsBack.tilePositionX = this.scene.cameras.main.scrollX * .4
-        this.nearClouds.tilePositionX = this.scene.cameras.main.scrollX * .6
-        this.groundBack.tilePositionX = this.scene.cameras.main.scrollX * .8
-        this.groundMid.tilePositionX = this.scene.cameras.main.scrollX * .9
-        this.groundFront.tilePositionX = this.scene.cameras.main.scrollX
-
-        // If the player go right, clock animation start, else if the player go left, clock animation reverse
-        // else the clock animation stop and memory the last frame
-        if(!this.scene.player.body.blocked.right && !this.scene.player.body.blocked.left) {
-            if (this.scene.player.body.velocity.x == 200) {
-                this.scene.clock.updateClock('forward');
-            } else if (this.scene.player.body.velocity.x == -200) {
-                this.scene.clock.updateClock('backward');
-            }
-        }
     }
 } 
