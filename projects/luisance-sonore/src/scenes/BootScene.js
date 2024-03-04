@@ -91,7 +91,11 @@ export class BootScene extends Scene {
       }
     })
     this.loadingText.setOrigin(0.5, 0.5)
-    
+
+    var url;
+
+    url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
+    this.load.plugin('rexvirtualjoystickplugin', url, true);
     
   }
 

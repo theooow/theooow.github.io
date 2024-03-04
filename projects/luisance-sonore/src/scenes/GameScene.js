@@ -15,6 +15,26 @@ export class GameScene extends Scene {
     super("scene-game")
   }
 
+  handlePointerDown(pointer) {
+    // Placer le joystick virtuel sous le point de contact
+    this.joyStick.x = pointer.x;
+    this.joyStick.y = pointer.y;
+    }
+
+    handlePointerMove(pointer) {
+        // Mettre à jour la position du joystick virtuel pendant le déplacement
+        if (this.joyStick && this.joyStick.isDragging) {
+            this.joyStick.x = pointer.x;
+            this.joyStick.y = pointer.y;
+        }
+    }
+
+    handlePointerUp(pointer) {
+        // Réinitialiser la position du joystick virtuel lorsque le pointeur est libéré
+        this.joyStick.x = 100; // Position initiale
+        this.joyStick.y = this.cameras.main.height - 100; // Position initiale
+    }
+
   create() {
     this.audio = {
       mainTheme: this.sound.add('mainTheme', {loop: true}),
@@ -27,6 +47,36 @@ export class GameScene extends Scene {
     this.audio.mainTheme.loop = true
     this.audio.jumpSound.volume = 0.5
     this.audio.walkSound.loop = true
+
+    this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
+      x: 100,
+      y: this.cameras.main.height - 100,
+      radius: 40,
+      base: this.add.circle(0, 0, 40, 0x888888),
+      thumb: this.add.circle(0, 0, 18, 0xcccccc),
+      // dir: '8dir',   // 'up&down'|0|'left&right'|1|'4dir'|2|'8dir'|3
+      // forceMin: 16,
+      // enable: true
+    })
+
+    // Activer les événements tactiles ou de souris
+    this.input.on('pointerdown', this.handlePointerDown, this);
+    this.input.on('pointermove', this.handlePointerMove, this);
+    this.input.on('pointerup', this.handlePointerUp, this);
+
+    this.cursorKeys = this.joyStick.createCursorKeys();
+
+
+    // set z-index
+    this.joyStick.base.setDepth(1000)
+    this.joyStick.thumb.setDepth(1001)
+
+    this.joyStick.base.setAlpha(0.5)
+    this.joyStick.thumb.setAlpha(0.8)
+
+    this.text = this.add.text(0, 0);
+    this.text.setDepth(30000)
+    this.text.setScrollFactor(0)
 
     this.clock = new Clock(this);
     this.door = new Door(this)
@@ -97,8 +147,6 @@ export class GameScene extends Scene {
   }
   
   update() {
-    const cursors = this.input.keyboard.createCursorKeys();
-
     if(this.player.body.onFloor() && this.player.eventStart) {
       this.player.readDialog('start')
       this.player.eventStart = false
@@ -106,7 +154,7 @@ export class GameScene extends Scene {
 
     this.clock.updateClock('forward');
     this.level.update()
-    this.player.update(this.cursors)
+    this.player.update(this.cursorKeys)
   }
 
 }

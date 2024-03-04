@@ -65,12 +65,12 @@ export class Player extends Base {
 
     update(cursors) {
         
-        //this.scene.input.addPointer(2) 
+        this.scene.input.addPointer(2) 
         // Keyboard controls
-        if ((cursors.left.isDown || this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT).isDown) && !this.isTalking) {
+        if ((cursors.left.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX < this.scene.sys.scale.gameSize.width / 2) && !this.isTalking)) {
             this.body.setVelocityX(-this.playerSpeed)
             this.anims.play('left', true)
-        } else if ((cursors.right.isDown || this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT).isDown) && !this.isTalking) {
+        } else if ((cursors.right.isDown || (this.scene.input.activePointer.isDown && this.scene.input.activePointer.downX > this.scene.sys.scale.gameSize.width / 2) && !this.isTalking)) {
             this.body.setVelocityX(this.playerSpeed)
             this.anims.play('right', true)
         } else if (cursors.up.isUp && cursors.left.isUp && cursors.right.isUp) {
@@ -78,7 +78,7 @@ export class Player extends Base {
             this.body.setVelocityX(0)
             this.anims.play('turn')
         }
-        if (cursors.up.isDown && this.body.onFloor() || ((this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP).isDown ||this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE).isDown) && this.body.onFloor())) {
+        if (cursors.up.isDown && this.body.onFloor() || (this.swipeDirection == "up" && this.body.onFloor())) {
             this.scene.audio.jumpSound.play()
             this.body.setVelocityY(-400)
         }
@@ -97,6 +97,29 @@ export class Player extends Base {
         }else
             this.scene.audio.walkSound.stop()
 
+        // Touch controls
+        if(!this.scene.input.activePointer.isDown && this.isClicling) {
+            if(Math.abs(this.scene.input.activePointer.upY - this.scene.input.activePointer.downY) >= 50) {
+                if(this.scene.input.activePointer.upY < this.scene.input.activePointer.downY) {
+                    this.swipeDirection = "up";
+                }
+            }
+            this.isClicling = false;
+        }else if(this.scene.input.activePointer.isDown && !this.isClicling) {
+            this.isClicling = true;
+        }
+
+        if(this.swipeDirection == "up" && this.body.onFloor()) {
+            this.scene.audio.jumpSound.play()
+            this.body.setVelocityY(-400);
+            this.swipeDirection = null;
+        }
+
+        // Right and left touch controls
+        if((!this.scene.input.activePointer.isDown && !cursors.left.isDown && !cursors.right.isDown) || this.isTalking){
+            this.body.setVelocityX(0);
+            this.anims.play('turn');            
+        }
 
     }
 
