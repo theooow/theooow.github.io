@@ -13,6 +13,8 @@ export class Level2 {
     create() {
         this.input = this.scene.input
 
+        this.skyBackground = this.scene.add.tileSprite(0, 0, this.width, this.height, 'space').setOrigin(0, 0).setScrollFactor(0)
+
         this.dialogPositionX = this.width / 2
         this.dialogPositionY = this.height - 200
 

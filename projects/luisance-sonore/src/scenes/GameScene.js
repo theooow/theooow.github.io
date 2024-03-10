@@ -37,6 +37,9 @@ export class GameScene extends Scene {
 
   create() {
 
+    // Démarrer EndScene
+    //this.scene.launch('scene-end')
+
     this.audio = {
       mainTheme: this.sound.add('mainTheme', {loop: true}),
       jumpSound: this.sound.add('jumpSound'),

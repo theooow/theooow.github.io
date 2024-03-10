@@ -6,6 +6,8 @@ import { Portal } from '../objects/Portal'
 
 import loop2 from '../assets/audios/loop2.wav'
 
+import space from '../assets/images/space.jpg'
+
 import level2 from '../assets/luisance-map/level2.json'
 import { Level2 } from '../levels/Level2'
 
@@ -22,6 +24,8 @@ export class EndScene extends Scene {
         this.load.on('progress', (percent) => {
           this.loadingBar.fillRect(0, this.cameras.main.height / 2, this.cameras.main.width * percent, 50)
         })
+
+        this.load.image('space', space)
     
         this.loadingText = this.make.text({
           x: this.cameras.main.width / 2,
@@ -98,6 +102,7 @@ export class EndScene extends Scene {
         this.joyStick.base.setAlpha(0.5)
         this.joyStick.thumb.setAlpha(0.8)
 
+        this.level = new Level2(this)
         // Add lvl 2 map
         this.map = this.make.tilemap({ key: 'level2' })
         this.tileset = this.map.addTilesetImage('tileset_final', 'tiles')
@@ -112,10 +117,12 @@ export class EndScene extends Scene {
         this.portal = new Portal(this)
         this.physics.add.collider(this.portal.portal, this.layer)
 
-        this.level = new Level2(this)
 
         // if overlap with portal, go show player dialog
         this.physics.add.overlap(this.player, this.portal.portal, () => {
+          this.joyStick.base.destroy()
+          this.joyStick.thumb.destroy()
+          this.player.anims.play('turn')
           if(!this.player.isTalking)
               this.player.readDialog('end')
             this.player.isTalking = true
