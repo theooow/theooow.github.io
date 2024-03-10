@@ -156,8 +156,8 @@ export class Level2 {
             this.answerRight.setText(answers.right.text);
             this.answerLeft.setText(answers.left.text);
     
-            this.answerLeft.off('pointerdown');
-            this.answerRight.off('pointerdown');
+            // this.answerLeft.off('pointerdown');
+            // this.answerRight.off('pointerdown');
     
             if (typeof answers.left.callback !== 'undefined') {
                 this.answerLeft.on('pointerdown', answers.left.callback);
