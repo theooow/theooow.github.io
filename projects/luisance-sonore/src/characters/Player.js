@@ -47,18 +47,18 @@ export class Player extends Base {
             },
             end: {
                 question: true,
-                say: ["Veux tu prendre la luisance ?"],
+                say: ["Veux tu franchir la brèche, et cueillir la luisance sonore ?"],
                 answers: {
                     left: {
                         text: "Oui",
                         callback: () => {
-                            window.open("https://www.shotgun.live/fr")
+                            window.location.href("https://www.shotgun.live/fr")
                         }
                     },
                     right: {
                         text: "Non",
                         callback: () => {
-                            window.open("https://www.google.com/search?q=comment+revenir+%C3%A0+la+r%C3%A9alit%C3%A9&oq=comment+revenir+%C3%A0+la+r%C3%A9alit%C3%A9&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgATSAQg3MTI5ajBqMagCALACAA&sourceid=chrome&ie=UTF-8", '_blank');
+                            window.location.href("https://www.google.com/search?q=comment+revenir+%C3%A0+la+r%C3%A9alit%C3%A9&oq=comment+revenir+%C3%A0+la+r%C3%A9alit%C3%A9&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgATSAQg3MTI5ajBqMagCALACAA&sourceid=chrome&ie=UTF-8", '_blank');
                         }
                     }
                 }
