@@ -1,6 +1,7 @@
 import { Scene } from 'phaser'
 
 import titleScreen from '../assets/images/titlescreen.png'
+import background from '../assets/images/title.jpg'
 
 import music from '../assets/audios/title.wav'
 
@@ -11,6 +12,7 @@ export class TitleScene extends Scene {
     }
     
     preload() {
+        this.load.image('background', background)
         this.load.image('titleScreen', titleScreen)
         this.width = this.game.screenBaseSize.width
         this.height = this.game.screenBaseSize.height
@@ -23,14 +25,58 @@ export class TitleScene extends Scene {
         this.music = this.sound.add('music', {loop: true})
 
         this.music.play()
-        this.add.image(0, 0, 'titleScreen').setOrigin(0, 0)
+        //this.add.image(0, 0, 'titleScreen').setOrigin(0, 0)
+        this.backGround = this.add.image(0,0, 'background')
+        this.backGround.displayWidth = window.innerWidth
+        this.backGround.setOrigin(0, 0)  
 
-        const text = this.width > 400 ? 'Click to start' : 'Tap to start'
-        const textWidth = this.width / 2 - (text.length * 5)
-        const button = this.add.text(textWidth, 450, text, { fill: '#fff' })
+
+        // mouvement de caméra vers le bas
+        this.cameras.main.fadeIn(1000, 0, 0, 0)
+        // Set zoom to 1.5
+        this.cameras.main.setZoom(2)
+        // Set rotation to 0.5
+        this.cameras.main.setRotation(0.3)
+        
+        this.tweens.add({
+            targets: this.cameras.main,
+            scrollY: window.innerHeight * 1.25,
+            duration: 4000,
+            ease: 'Power2',
+            onComplete: () => {
+                console.log('Mouvement de la caméra vers le bas terminé !');
+            }
+        });
+
+        this.tweens.add({
+            targets: this.cameras.main,
+            zoom: 1, 
+            duration: 2500,
+            ease: 'Power2',
+            onComplete: () => {
+                console.log('Mouvement de la caméra vers le bas terminé !');
+            }
+        });
+
+        this.tweens.add({
+            targets: this.cameras.main,
+            rotation: 0,
+            duration: 4000,
+            ease: 'Power2',
+            onComplete: () => {
+                console.log('Mouvement de la caméra vers le bas terminé !');
+            }
+        });
+
+
+        const text = 'Demarrer le jeu'
+        const textWidth = window.innerWidth / 2
+        const button = this.add.text(textWidth, 200, text, { fill: '#fff' })
             .setInteractive()
+            .setAlpha(0)
+            .setScrollFactor(0)
             .setOrigin(0.5)
-            .setPadding(10)
+            .setPadding(20)
             .setFontFamily('Blanka')
             .setStyle({ backgroundColor: '#111' })
             .setInteractive({ useHandCursor: true })
@@ -40,5 +86,13 @@ export class TitleScene extends Scene {
                 this.music.stop()
                 this.scene.start('scene-boot')
             })
+        
+        this.tweens.add({
+            targets: button,
+            alpha: 1,
+            delay: 3400,
+            duration: 1000,
+            ease: 'Power2',
+        })
     }
 }
