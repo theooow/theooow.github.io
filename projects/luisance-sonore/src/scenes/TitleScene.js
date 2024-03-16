@@ -94,5 +94,13 @@ export class TitleScene extends Scene {
             duration: 1000,
             ease: 'Power2',
         })
+
+        this.tweens.add({
+            targets: button,
+            y: 260,
+            delay: 3400,
+            duration: 2000,
+            ease: 'Power2',
+        })
     }
 }
