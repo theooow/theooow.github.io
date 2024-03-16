@@ -40,7 +40,7 @@ export class TitleScene extends Scene {
         
         this.tweens.add({
             targets: this.cameras.main,
-            scrollY: window.innerHeight * 1.25,
+            scrollY: window.innerHeight * 1.29,
             duration: 4000,
             ease: 'Power2',
             onComplete: () => {
