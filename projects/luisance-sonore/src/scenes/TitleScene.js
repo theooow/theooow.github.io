@@ -27,26 +27,28 @@ export class TitleScene extends Scene {
         this.music.play()
         //this.add.image(0, 0, 'titleScreen').setOrigin(0, 0)
         this.backGround = this.add.image(0,0, 'background')
-        this.backGround.displayWidth = window.innerWidth
-        this.backGround.setOrigin(0, 0)  
+        this.backGround.setOrigin(0.5, 0.5)  
+        //Center the image
+        this.backGround.x = window.innerWidth / 2
+        this.backGround.y = window.innerHeight / 2
 
 
         // mouvement de caméra vers le bas
         this.cameras.main.fadeIn(1000, 0, 0, 0)
         // Set zoom to 1.5
-        this.cameras.main.setZoom(2)
+        this.cameras.main.setZoom(4)
         // Set rotation to 0.5
-        this.cameras.main.setRotation(0.3)
+        this.cameras.main.setRotation(0.5)
         
-        this.tweens.add({
-            targets: this.cameras.main,
-            scrollY: window.innerHeight * 1.29,
-            duration: 4000,
-            ease: 'Power2',
-            onComplete: () => {
-                console.log('Mouvement de la caméra vers le bas terminé !');
-            }
-        });
+        // this.tweens.add({
+        //     targets: this.cameras.main,
+        //     scrollY: window.innerHeight * 1.29,
+        //     duration: 4000,
+        //     ease: 'Power2',
+        //     onComplete: () => {
+        //         console.log('Mouvement de la caméra vers le bas terminé !');
+        //     }
+        // });
 
         this.tweens.add({
             targets: this.cameras.main,
@@ -69,9 +71,9 @@ export class TitleScene extends Scene {
         });
 
 
-        const text = 'Demarrer le jeu'
+        const text = 'Démarrer le jeu'
         const textWidth = window.innerWidth / 2
-        const button = this.add.text(textWidth, 200, text, { fill: '#fff' })
+        const button = this.add.text(textWidth, window.innerHeight / 2 + 200, text, { fill: '#fff' })
             .setInteractive()
             .setAlpha(0)
             .setScrollFactor(0)
@@ -90,15 +92,15 @@ export class TitleScene extends Scene {
         this.tweens.add({
             targets: button,
             alpha: 1,
-            delay: 3400,
+            delay: 2500,
             duration: 1000,
             ease: 'Power2',
         })
 
         this.tweens.add({
             targets: button,
-            y: 260,
-            delay: 3400,
+            y: window.innerHeight / 2 + 150,
+            delay: 2500,
             duration: 2000,
             ease: 'Power2',
         })

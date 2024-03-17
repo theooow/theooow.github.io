@@ -2,7 +2,7 @@ import { Base } from './Base';
 
 export class Player extends Base {
 
-    constructor(scene, x, y, texture) {
+    constructor(scene, x, y, texture, level=0) {
         super(scene, x, y, texture);
         this.scene = scene;
         this.body.setSize(150, 250);
@@ -64,6 +64,10 @@ export class Player extends Base {
                 }
             }
         }
+        let loop = 1;
+        if(level === 1){
+            loop = -1;
+        }
 
         this.preFX.setPadding(32)
         const fx = this.preFX.addGlow();
@@ -72,7 +76,7 @@ export class Player extends Base {
             outerStrength: 12,
             alpha: 0.6,
             yoyo: true,
-            loop: 1,
+            loop: loop,
             duration: 1000,
             ease: 'sine.inout',
             onComplete: () => {

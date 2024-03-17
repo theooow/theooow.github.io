@@ -15,7 +15,7 @@ export class Marcelle extends Base {
             },
             next: {
                 question: false,
-                say:["J'suis la cagole en cagoule, plus chépere que la bonne mère.",]
+                say:["J'suis la cagole en cagoule, plus ché-père que la bonne mère.",]
             }
         }
     }

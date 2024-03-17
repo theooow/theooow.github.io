@@ -110,7 +110,7 @@ export class EndScene extends Scene {
         this.layer.setCollisionByExclusion(-1, true)
         this.physics.world.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels)
 
-        this.player = this.physics.add.existing(new Player(this, 600, 600, 'dude'))
+        this.player = this.physics.add.existing(new Player(this, 600, 600, 'dude', 1))
         this.player.setDepth(2)
         this.physics.add.collider(this.player, this.layer)
     
