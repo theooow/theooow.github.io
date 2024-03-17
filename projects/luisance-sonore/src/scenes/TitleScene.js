@@ -71,7 +71,7 @@ export class TitleScene extends Scene {
         });
 
 
-        const text = 'Démarrer le jeu'
+        const text = 'Demarrer le jeu'
         const textWidth = window.innerWidth / 2
         const button = this.add.text(textWidth, window.innerHeight / 2 + 200, text, { fill: '#fff' })
             .setInteractive()

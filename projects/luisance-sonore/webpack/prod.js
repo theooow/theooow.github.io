@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: "production",
@@ -13,8 +14,8 @@ module.exports = {
   },
   devtool: false,
   performance: {
-    maxEntrypointSize: 2500000,
-    maxAssetSize: 1200000
+    maxEntrypointSize: 2800000,
+    maxAssetSize: 1500000
   },
   module: {
     rules: [
@@ -36,6 +37,29 @@ module.exports = {
       {
         test: /\.wav$/,
         use:"file-loader"
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/'
+          }
+        }
+      },
+      {
+        test: /\.font\.js/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false
+            }
+          },
+          'webfonts-loader'
+        ]
       }
     ]
   },

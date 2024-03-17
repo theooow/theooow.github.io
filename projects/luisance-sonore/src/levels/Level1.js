@@ -81,8 +81,8 @@ export class Level1 {
 
         this.subTitle = this.scene.add.text(this.dialogPositionX, this.dialogPositionY,
                             '(subtiles)', { 
+                                fontFamily: 'Kenney-Future-Narrow',
                                 fill: '#fff',
-                                fontFamily: 'Sans Serif',
                                 align: 'center',
                                 padding: 50,
                                 fontSize: 20,
@@ -110,7 +110,7 @@ export class Level1 {
                             '(answer left)', { 
                                 backgroundColor: '#000',
                                 fill: '#fff',
-                                fontFamily: 'Sans Serif',
+                                fontFamily: 'Kenney-Future-Narrow',
                                 align: 'right',
                                 padding: 20,
                                 fontSize: 20,
@@ -122,7 +122,7 @@ export class Level1 {
                             '(answer right)', { 
                                 backgroundColor: '#000',
                                 fill: '#fff',
-                                fontFamily: 'Sans Serif',
+                                fontFamily: 'Kenney-Future-Narrow',
                                 align: 'left',
                                 padding: 20,
                                 fontSize: 20,

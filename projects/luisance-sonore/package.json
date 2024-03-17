@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "phaser": "^3.60.0"
+    "mini-css-extract-plugin": "^2.8.1",
+    "phaser": "^3.60.0",
+    "webfonts-loader": "^8.0.1"
   }
 }

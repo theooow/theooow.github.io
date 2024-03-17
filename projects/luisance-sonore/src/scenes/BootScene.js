@@ -12,6 +12,8 @@ import ground1 from '../assets/images/ground_1.png'
 import ground2 from '../assets/images/ground_2.png'
 import ground3 from '../assets/images/ground_3.png'
 
+import trancefusion from '../assets/images/trancefusion.png'
+
 
 import tiles from '../assets/images/tileset_final.png'
 import level1 from '../assets/luisance-map/map-luisance.json'
@@ -35,6 +37,8 @@ export class BootScene extends Scene {
   }
   
   preload() {
+    
+    this.load.image('trancefusion', trancefusion)
 
     // Load any assets here from your assets directory
     this.load.image('skyBackground', skyBackground)
@@ -84,17 +88,53 @@ export class BootScene extends Scene {
     this.loadingText = this.make.text({
       x: this.cameras.main.width / 2,
       y: this.cameras.main.height / 2 - 50,
-      text: 'Loading...',
+      text: 'Chargement...',
       style: {
-        font: '20px monospace',
+        fontSize: '20px',
+        fontFamily: 'Kenney-Future-Narrow',
         fill: '#ffffff'
       }
     })
     this.loadingText.setOrigin(0.5, 0.5)
 
-    var url;
+    // Écouter l'événement loadcomplete pour le chargement de l'image
+    this.load.on('loadcomplete', function() {
+      console.log('Chargement de l\'image terminé');
+  });
 
-    url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
+
+    // Load and display the image
+    
+    this.load.on('filecomplete', function (key, type, data) {
+        if (type === 'image' && key === 'trancefusion') {
+            let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height - 100, 'trancefusion')
+            .setOrigin(0.5, 0.5)
+            .setScale(0.2)
+
+            this.add.tween({
+              targets: image,
+              y: this.cameras.main.height - 120,
+              duration: 1000,
+              ease: 'Power2',
+              yoyo: true,
+              loop: -1
+            })
+        }
+        this.make.text({
+          x: this.cameras.main.width / 2,
+          y: this.cameras.main.height - 170,
+          text: 'Présenté par',
+          style: {
+            fontSize: '16px',
+            fontFamily: 'Kenney-Future-Narrow',
+            fill: '#ffffff'
+          }
+        }).setOrigin(0.5, 0.5)
+    }, this);
+
+
+    // Load the virtual joystick plugin
+    var url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js';
     this.load.plugin('rexvirtualjoystickplugin', url, true);
     
   }

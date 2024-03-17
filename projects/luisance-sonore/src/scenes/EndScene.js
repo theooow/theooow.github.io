@@ -4,6 +4,8 @@ import {Player} from '../characters/Player'
 
 import { Portal } from '../objects/Portal'
 
+import trancefusion from '../assets/images/trancefusion.png'
+
 import loop2 from '../assets/audios/loop2.wav'
 
 import space from '../assets/images/space.jpg'
@@ -17,6 +19,7 @@ export class EndScene extends Scene {
     }
 
     preload(){
+        this.load.image('trancefusion', trancefusion)
         this.load.audio('loop2', loop2)
         this.load.tilemapTiledJSON('level2', level2)
 
@@ -30,7 +33,7 @@ export class EndScene extends Scene {
         this.loadingText = this.make.text({
           x: this.cameras.main.width / 2,
           y: this.cameras.main.height / 2 - 50,
-          text: 'Loading...',
+          text: 'Chargement...',
           style: {
             font: '20px monospace',
             fill: '#ffffff'
@@ -38,7 +41,32 @@ export class EndScene extends Scene {
         })
         this.loadingText.setOrigin(0.5, 0.5)
 
-        
+            
+        this.load.on('filecomplete', function (key, type, data) {
+          if (type === 'image' && key === 'trancefusion') {
+              let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height - 100, 'trancefusion')
+              .setOrigin(0.5, 0.5)
+              .setScale(0.2)
+
+              this.add.tween({
+                targets: image,
+                y: this.cameras.main.height - 120,
+                duration: 1000,
+                ease: 'Power2',
+                yoyo: true,
+                loop: -1
+              })
+          }
+          this.make.text({
+            x: this.cameras.main.width / 2,
+            y: this.cameras.main.height - 170,
+            text: 'Présenté par',
+            style: {
+              font: '16px monospace',
+              fill: '#ffffff'
+            }
+          }).setOrigin(0.5, 0.5)
+      }, this);
 
     }
 
