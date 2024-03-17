@@ -1,0 +1,1166 @@
+@font-face {
+  font-family: Bellefair;
+  src: url("Bellefair-Regular.9087c650.ttf");
+}
+
+@font-face {
+  font-family: Barlow Condensed;
+  src: url("BarlowCondensed-Regular.803f4a38.ttf");
+}
+
+@font-face {
+  font-family: Barlow;
+  src: url("Barlow-Regular.5484baa3.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  text-transform: uppercase;
+  font-family: Bellefair;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+h1 {
+  font-size: 150px;
+}
+
+h2 {
+  font-size: 100px;
+}
+
+h3 {
+  font-size: 56px;
+}
+
+h4 {
+  font-size: 32px;
+}
+
+h5 {
+  color: #d0d6f9;
+  letter-spacing: 4.725px;
+  font-family: Barlow Condensed;
+  font-size: 28px;
+}
+
+h6 {
+  color: #fff;
+  letter-spacing: 4.725px;
+  font-family: Barlow Condensed;
+  font-size: 28px;
+}
+
+.bg-destination {
+  background: url("background-destination-desktop.52a963e4.jpg") center / cover no-repeat;
+}
+
+.bg-crew {
+  background: url("background-crew-desktop.953cc365.jpg") center / cover no-repeat;
+}
+
+.bg-technology {
+  background: url("background-technology-desktop.1f82e89d.jpg") center / cover no-repeat;
+}
+
+body {
+  background: url("background-home-desktop.df54af4e.jpg") center / cover no-repeat;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+header {
+  justify-content: space-between;
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+}
+
+header .cross, header .burger {
+  display: none;
+}
+
+header .header__logo {
+  align-self: center;
+  padding: 0 50px;
+}
+
+header .line {
+  opacity: .2515;
+  z-index: 1;
+  background: #fff;
+  align-self: center;
+  width: 573px;
+  height: 1px;
+  margin: 32px 0;
+  position: relative;
+  right: -25px;
+}
+
+header .header__nav {
+  -webkit-backdrop-filter: blur(40.7742px);
+  backdrop-filter: blur(40.7742px);
+  background: #ffffff0a;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 830px;
+  height: 96px;
+  display: flex;
+}
+
+header .header__nav .tabs-highlighter {
+  background: #fff;
+  width: 72px;
+  height: 3px;
+  transition: all .3s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 116px;
+}
+
+header .header__nav ul {
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+  display: flex;
+}
+
+header .header__nav ul li {
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  display: flex;
+}
+
+header .header__nav ul li a {
+  color: #fff;
+  letter-spacing: 2.7px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 3px solid #0000;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-family: Barlow Condensed;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  display: flex;
+}
+
+header .header__nav ul li a:hover {
+  border-bottom: 3px outset #ffffff80;
+}
+
+header .header__nav ul li a span {
+  margin-right: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+section.home {
+  justify-content: space-between;
+  max-width: 1080px;
+  margin: 200px auto 110px;
+}
+
+section.technology .fw-700 {
+  opacity: .25;
+  margin-right: 10px;
+}
+
+section.technology .container__techinfo {
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 700px;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image {
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 500px;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector {
+  flex-direction: column;
+  justify-content: space-between;
+  width: 150px;
+  height: 300px;
+  display: flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle {
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  background: none;
+  border: 1px solid #ffffff40;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  margin-right: 1.5px;
+  font-family: Bellefair;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: inline-flex;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle:hover {
+  border: 1px solid #fff;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .active {
+  color: #0b0d17;
+  background: #fff;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-content h4 {
+  color: #d0d6f9;
+  letter-spacing: 2.7px;
+  margin-bottom: 10px;
+  font-family: Barlow Condensed;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-content h3 {
+  margin-bottom: 15px;
+}
+
+section.technology .container__techinfo .container__menu_image .tech-content p {
+  color: #d0d6f9;
+  width: 444px;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image {
+  width: 552px;
+  height: 640px;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image .tech-image {
+  mix-blend-mode: screen;
+  background: url("image-launch-vehicle-portrait.9a3eac19.jpg") center no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image .Spaceport {
+  mix-blend-mode: screen;
+  background: url("image-spaceport-portrait.8e982ebe.jpg") center no-repeat;
+}
+
+section.technology .container__techinfo .container__menu_image .container__tech_image .Space-capsule {
+  mix-blend-mode: screen;
+  background: url("image-space-capsule-portrait.aeb78016.jpg") center no-repeat;
+}
+
+section.crew {
+  justify-content: space-between;
+  max-width: 1180px;
+}
+
+section.crew .fw-700 {
+  opacity: .25;
+  margin-right: 10px;
+}
+
+section.crew .container__crewinfo_image {
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+}
+
+section.crew .container__crewinfo {
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-height: 600px;
+  display: flex;
+}
+
+section.crew .container__crewinfo .teammate-infos {
+  height: 300px;
+  position: relative;
+  top: -10px;
+}
+
+section.crew .container__crewinfo .selector circle {
+  cursor: pointer;
+}
+
+section.crew .container__crewinfo .selector circle:hover {
+  fill: #fff;
+  opacity: .5;
+}
+
+section.crew .container__crewinfo h4 {
+  color: #fff;
+  text-transform: uppercase;
+  opacity: .5042;
+  margin-bottom: 10px;
+  font-family: Bellefair;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+section.crew .container__crewinfo h3 {
+  margin-bottom: 20px;
+}
+
+section.crew .container__crewinfo p {
+  color: #d0d6f9;
+  width: 444px;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+section.crew .container__crewimage {
+  height: 100%;
+}
+
+section.crew .container__crewimage .hidden-line {
+  display: none;
+}
+
+section.crew .container__crewimage .image__teammate {
+  background: url("image-douglas-hurley.bf156fd3.webp") bottom / contain no-repeat;
+  flex-shrink: 0;
+  width: 568.072px;
+  height: 712px;
+}
+
+section.crew .container__crewimage .Mark-Shuttleworth {
+  background: url("image-mark-shuttleworth.14ec04f0.webp") bottom / contain no-repeat;
+  width: 453.44px;
+  height: 654px;
+}
+
+section.crew .container__crewimage .Victor-Glover {
+  background: url("image-victor-glover.455474c7.webp") 50% 50px / contain no-repeat;
+  width: 554.388px;
+  height: 681px;
+}
+
+section.crew .container__crewimage .Anousheh-Ansari {
+  background: url("image-anousheh-ansari.4358acf0.webp") 50% 0 / contain no-repeat;
+  width: 615.567px;
+  height: 650px;
+}
+
+section.destination {
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+}
+
+section.destination .fw-700 {
+  opacity: .25;
+  margin-right: 28px;
+}
+
+section.destination .container__image_info {
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+}
+
+section.destination .container__image {
+  width: 500px;
+  height: 500px;
+  position: relative;
+}
+
+section.destination .image__planet {
+  background: url("image-moon.31f6a208.webp") center / contain no-repeat;
+  align-self: center;
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  top: 100px;
+  right: 0;
+}
+
+section.destination .Mars {
+  background: url("image-mars.ec201c70.webp") center / contain no-repeat;
+}
+
+section.destination .Europa {
+  background: url("image-europa.a78e4a35.webp") center / contain no-repeat;
+}
+
+section.destination .Titan {
+  background: url("image-titan.39952286.webp") center / contain no-repeat;
+}
+
+.container {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 50px 50px 0;
+  display: flex;
+}
+
+.container__content {
+  border: 1px solid #000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  width: 450px;
+  padding-right: 5px;
+  display: inline-flex;
+}
+
+.container__content p.home-p {
+  color: #d0d6f9;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.container__btn {
+  justify-content: center;
+  height: 274px;
+  margin-top: 100px;
+  display: flex;
+  position: relative;
+}
+
+.container__btn .round-btn {
+  background: #fff;
+  border-radius: 274px;
+  flex-shrink: 0;
+  align-self: flex-end;
+  width: 274px;
+  height: 274px;
+}
+
+.container__btn .round-btn:hover:before {
+  content: "";
+  z-index: -1;
+  background: #ffffff1a;
+  border-radius: 274px;
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  top: calc(50% - 225px);
+  left: calc(50% - 225px);
+}
+
+.container__btn .round-btn a {
+  color: #0b0d17;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 274px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: Bellefair;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+  display: flex;
+}
+
+.container__informations {
+  flex-direction: column;
+  justify-content: space-around;
+  width: 444px;
+  height: 472px;
+  margin-top: 90px;
+  display: flex;
+}
+
+.container__informations .line {
+  background: #383b4b;
+  flex-shrink: 0;
+  width: 444px;
+  height: 1px;
+  margin-top: 20px;
+}
+
+.container__informations nav {
+  position: relative;
+}
+
+.container__informations nav ul {
+  flex-shrink: 0;
+  justify-content: space-between;
+  width: 285.5px;
+  height: 34px;
+  display: flex;
+}
+
+.container__informations nav ul li {
+  color: #d0d6f9;
+  letter-spacing: 2.7px;
+  cursor: pointer;
+  border-bottom: 3px solid #0000;
+  font-family: Barlow Condensed;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  list-style: none;
+}
+
+.container__informations nav ul li:hover {
+  border-bottom: 3px outset #ffffff80;
+}
+
+.container__informations nav ul .active {
+  color: #fff;
+}
+
+.container__informations nav .mini-tabs-highlighter {
+  background: #fff;
+  width: 39px;
+  height: 3px;
+  transition: all .3s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.container__informations p {
+  color: #d0d6f9;
+  font-family: Barlow;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.container__informations .informations__travel {
+  display: flex;
+}
+
+.container__informations .informations__travel .informations__travel__item {
+  width: 222px;
+}
+
+.container__informations .informations__travel .informations__travel__item p {
+  letter-spacing: 2.362px;
+  text-transform: uppercase;
+  font-family: Barlow Condensed;
+  font-size: 14px;
+}
+
+.container__informations .informations__travel .informations__travel__item h3 {
+  color: #fff;
+  text-transform: uppercase;
+  font-family: Bellefair;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (width <= 1056px) {
+  section.crew {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-top: 40px !important;
+  }
+
+  section.crew h6 {
+    align-self: flex-start;
+    margin-bottom: 100px;
+    margin-left: 50px;
+    font-size: 20px;
+  }
+
+  section.crew .container__crewinfo_image {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section.crew .container__crewimage .image__teammate {
+    width: 456.372px;
+    height: 572px;
+  }
+
+  section.crew .container__crewimage .Anousheh-Ansari {
+    background-position: 0 100px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos {
+    height: 250px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos h3 {
+    margin: 5px;
+    font-size: 40px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos h4 {
+    font-size: 24px;
+  }
+
+  section.crew .container__crewinfo .teammate-infos p#crew-bio {
+    margin: 0 auto;
+    font-size: 16px;
+  }
+}
+
+@media screen and (width <= 994px) {
+  body {
+    background: url("background-home-tablet.3f0f8f1b.jpg") center / cover no-repeat;
+  }
+
+  .bg-destination {
+    background: url("background-destination-tablet.c6b261a1.jpg") center / cover no-repeat;
+  }
+
+  .bg-crew {
+    background: url("background-crew-tablet.23521232.jpg") center / cover no-repeat;
+  }
+
+  .bg-technology {
+    background: url("background-technology-tablet.3b07c809.jpg") center / cover no-repeat;
+  }
+
+  header {
+    margin: 0;
+    padding: 0;
+  }
+
+  header .line {
+    display: none;
+  }
+
+  header .header__nav {
+    width: 450px;
+    height: 96px;
+  }
+
+  header .header__nav span {
+    display: none;
+  }
+
+  header .header__nav .tabs-highlighter {
+    width: 41px;
+    left: 55px;
+  }
+
+  section.container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+  }
+
+  section.container .container__content {
+    text-align: center;
+    border: 0;
+    align-items: center;
+    margin-bottom: 150px;
+  }
+
+  section.container .container__content h5 {
+    font-size: 20px;
+  }
+
+  section.container .container__content p {
+    font-size: 16px;
+  }
+
+  section.container .container__btn {
+    height: 242px;
+    margin: 0;
+  }
+
+  section.container .container__btn .round-btn {
+    width: 242px;
+    height: 242px;
+  }
+
+  section.container .container__btn .round-btn a {
+    font-size: 32px;
+  }
+
+  section.container .container__btn .round-btn:hover:before {
+    border-radius: 242px;
+    width: 400px;
+    height: 400px;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+  }
+
+  section.destination {
+    text-align: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  section.destination h6 {
+    align-self: flex-start;
+    margin-left: 50px;
+    font-size: 20px;
+  }
+
+  section.destination .container__image_info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section.destination .container__image {
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+  }
+
+  section.destination .container__image .image__planet {
+    position: relative;
+    top: 65px;
+  }
+
+  section.destination .container__informations {
+    align-items: center;
+    margin-bottom: 100px;
+  }
+
+  section.destination .container__informations h2 {
+    font-size: 80px;
+  }
+
+  section.destination .container__informations p {
+    font-size: 16px;
+  }
+
+  section.technology {
+    margin-top: 0;
+  }
+
+  section.technology h6 {
+    margin: 40px 0 50px;
+    padding: 0 0 20px 50px;
+    font-size: 20px;
+  }
+
+  section.technology .container__techinfo {
+    padding: 0;
+  }
+
+  section.technology .container__techinfo .container__menu_image {
+    flex-direction: column-reverse;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content {
+    text-align: center;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content h3 {
+    font-size: 40px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content p {
+    font-size: 16px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector {
+    flex-direction: row;
+    width: 300px;
+    height: 100px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle {
+    width: 80px;
+    height: 80px;
+    margin-right: 1.5px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image {
+    width: 100%;
+    height: 40vw;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image .tech-image {
+    background: url("image-launch-vehicle-landscape.41497a76.jpg") center / cover no-repeat;
+    width: 100%;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image .Spaceport {
+    background: url("image-spaceport-landscape.8f21cbcf.jpg") center / cover no-repeat;
+  }
+
+  section.technology .container__techinfo .container__menu_image .container__tech_image .Space-capsule {
+    background: url("image-space-capsule-landscape.252e2a59.jpg") center / cover no-repeat;
+  }
+}
+
+@media screen and (width <= 600px) {
+  .container {
+    padding: 0;
+  }
+
+  header .burger {
+    cursor: pointer;
+    background: url("icon-hamburger.1d45749e.svg") center no-repeat;
+    width: 24px;
+    height: 21px;
+    margin: 30px 20px 0 0;
+    display: block;
+  }
+
+  header .show {
+    transition: transform .1s ease-in-out;
+    transform: translate(-254px);
+  }
+
+  header .header__nav {
+    z-index: 2;
+    width: 254px;
+    height: 100vh;
+    transition: transform .3s ease-in-out;
+    position: fixed;
+    right: -254px;
+  }
+
+  header .header__nav .cross {
+    cursor: pointer;
+    background: url("icon-close.2f2392e8.svg") center no-repeat;
+    width: 19.092px;
+    height: 19.092px;
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+  }
+
+  header .header__nav .vertical-highlighter {
+    background: #fff;
+    width: 4px;
+    height: 50px;
+    transition: all .3s ease-in-out;
+    position: absolute;
+    top: 125px;
+    right: 0;
+  }
+
+  header .header__nav ul {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 250px;
+  }
+
+  header .header__nav ul li {
+    width: 100%;
+    height: 50px;
+  }
+
+  header .header__nav ul li a {
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    display: block;
+  }
+
+  header .header__nav ul li a:hover {
+    border-bottom: 0;
+  }
+
+  header .header__nav ul li span {
+    display: inline;
+  }
+
+  header .header__nav .tabs-highlighter {
+    display: none;
+  }
+
+  header .header__logo {
+    padding: 20px;
+  }
+}
+
+@media screen and (width <= 376px) {
+  body {
+    background: url("background-home-mobile.281dd2b8.jpg") center / cover no-repeat;
+  }
+
+  .bg-destination {
+    background: url("background-destination-mobile.c27b6ea6.jpg") center / cover no-repeat;
+  }
+
+  .bg-crew {
+    background: url("background-crew-mobile.4c0e96e1.jpg") center / cover no-repeat;
+  }
+
+  .bg-technology {
+    background: url("background-technology-mobile.d85f3c75.jpg") center / cover no-repeat;
+  }
+
+  section.home {
+    margin: 25px 0 20px;
+  }
+
+  section.home .container__content {
+    width: 100vw;
+    margin-bottom: 50px;
+  }
+
+  section.home .container__content h1 {
+    font-size: 80px;
+  }
+
+  section.home .container__content h5 {
+    font-size: 16px;
+  }
+
+  section.home .container__content p.home-p {
+    width: 327px;
+    font-size: 15px;
+  }
+
+  section.home .container__btn {
+    margin: 0;
+  }
+
+  section.home .container__btn .round-btn {
+    width: 150px;
+    height: 150px;
+  }
+
+  section.home .container__btn .round-btn a {
+    font-size: 20px;
+  }
+
+  section.destination h6 {
+    align-self: center;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  section.destination h6 span.fw-700 {
+    margin-right: 5px;
+  }
+
+  section.destination .container__image_info .container__image {
+    width: 249px;
+    height: 249px;
+  }
+
+  section.destination .container__image_info .container__image .image__planet {
+    top: 20px;
+  }
+
+  section.destination .container__image_info .container__informations {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  section.destination .container__image_info .container__informations ul li {
+    font-size: 14px;
+  }
+
+  section.destination .container__image_info .container__informations h2 {
+    margin-top: 20px;
+    font-size: 56px;
+  }
+
+  section.destination .container__image_info .container__informations p {
+    width: 327px;
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  section.destination .container__image_info .container__informations .line {
+    width: 327px;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel {
+    flex-direction: column;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel .informations__travel__item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel .informations__travel__item h3 {
+    font-size: 28px;
+  }
+
+  section.destination .container__image_info .container__informations .informations__travel .informations__travel__item p {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  section.crew h6 {
+    align-self: center;
+    margin: 0;
+    font-size: 16px;
+  }
+
+  section.crew h6 span.fw-700 {
+    margin-right: 5px;
+  }
+
+  section.crew .container__crewinfo_image {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo {
+    flex-direction: column-reverse;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo .selector {
+    margin-bottom: 40px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo h4 {
+    font-size: 16px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo h3 {
+    font-size: 24px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewinfo p {
+    width: 327px;
+    font-size: 15px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    display: flex;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .image__teammate {
+    width: 177px;
+    height: 222px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .hidden-line {
+    background: #383b4b;
+    width: 327px;
+    height: 1px;
+    display: block;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .Victor-Glover {
+    background-position: 0 10px;
+    width: 180.726px;
+    height: 222px;
+  }
+
+  section.crew .container__crewinfo_image .container__crewimage .Anousheh-Ansari {
+    background-position: 0 0;
+    width: 226.147px;
+    height: 223px;
+  }
+
+  section.technology h6 {
+    align-self: center;
+    margin: 0 0 40px;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  section.technology h6 span.fw-700 {
+    margin-right: 5px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu {
+    justify-content: flex-start;
+    height: auto;
+    margin-top: 50px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector {
+    width: 160px;
+    height: 40px;
+    margin-bottom: 30px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-selector .circle {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content {
+    width: 327px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content h4 {
+    font-size: 14px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content h3 {
+    font-size: 24px;
+  }
+
+  section.technology .container__techinfo .container__menu_image .tech-menu .tech-content p {
+    width: 327px;
+    font-size: 15px;
+    line-height: 25px;
+  }
+}
+
+/*# sourceMappingURL=index.38ec9247.css.map */
