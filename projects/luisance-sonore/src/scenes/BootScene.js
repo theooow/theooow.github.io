@@ -40,7 +40,35 @@ export class BootScene extends Scene {
     
     this.load.image('trancefusion', trancefusion)
 
-    // Load any assets here from your assets directory
+        // Load and display the image
+    
+        this.load.on('filecomplete', function (key, type, data) {
+          if (type === 'image' && key === 'trancefusion') {
+              let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height - 100, 'trancefusion')
+              .setOrigin(0.5, 0.5)
+              .setScale(0.2)
+  
+              this.add.tween({
+                targets: image,
+                y: this.cameras.main.height - 120,
+                duration: 1000,
+                ease: 'Power2',
+                yoyo: true,
+                loop: -1
+              })
+          }
+          this.make.text({
+            x: this.cameras.main.width / 2,
+            y: this.cameras.main.height - 170,
+            text: 'Présenté par',
+            style: {
+              fontSize: '16px',
+              fontFamily: 'Kenney-Future-Narrow',
+              fill: '#ffffff'
+            }
+          }).setOrigin(0.5, 0.5)
+
+           // Load any assets here from your assets directory
     this.load.image('skyBackground', skyBackground)
     this.load.image('clouds1', clouds1)
     this.load.image('rocks', rocks)
@@ -79,6 +107,9 @@ export class BootScene extends Scene {
     this.load.audio('dialogSound', dialogSound)
     this.load.audio('dialogLowSound', dialogLowSound)
     this.load.audio('walkSound', walkSound)
+      }, this);
+
+   
 
     this.loadingBar = this.add.graphics({fillStyle: {color: 0xffffff}})
     this.load.on('progress', (percent) => {
@@ -101,36 +132,6 @@ export class BootScene extends Scene {
     this.load.on('loadcomplete', function() {
       console.log('Chargement de l\'image terminé');
   });
-
-
-    // Load and display the image
-    
-    this.load.on('filecomplete', function (key, type, data) {
-        if (type === 'image' && key === 'trancefusion') {
-            let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height - 100, 'trancefusion')
-            .setOrigin(0.5, 0.5)
-            .setScale(0.2)
-
-            this.add.tween({
-              targets: image,
-              y: this.cameras.main.height - 120,
-              duration: 1000,
-              ease: 'Power2',
-              yoyo: true,
-              loop: -1
-            })
-        }
-        this.make.text({
-          x: this.cameras.main.width / 2,
-          y: this.cameras.main.height - 170,
-          text: 'Présenté par',
-          style: {
-            fontSize: '16px',
-            fontFamily: 'Kenney-Future-Narrow',
-            fill: '#ffffff'
-          }
-        }).setOrigin(0.5, 0.5)
-    }, this);
 
 
     // Load the virtual joystick plugin

@@ -20,28 +20,6 @@ export class EndScene extends Scene {
 
     preload(){
         this.load.image('trancefusion', trancefusion)
-        this.load.audio('loop2', loop2)
-        this.load.tilemapTiledJSON('level2', level2)
-
-        this.loadingBar = this.add.graphics({fillStyle: {color: 0xffffff}})
-        this.load.on('progress', (percent) => {
-          this.loadingBar.fillRect(0, this.cameras.main.height / 2, this.cameras.main.width * percent, 50)
-        })
-
-        this.load.image('space', space)
-    
-        this.loadingText = this.make.text({
-          x: this.cameras.main.width / 2,
-          y: this.cameras.main.height / 2 - 50,
-          text: 'Chargement...',
-          style: {
-            font: '20px monospace',
-            fill: '#ffffff'
-          }
-        })
-        this.loadingText.setOrigin(0.5, 0.5)
-
-            
         this.load.on('filecomplete', function (key, type, data) {
           if (type === 'image' && key === 'trancefusion') {
               let image = this.add.image(this.cameras.main.width / 2, this.cameras.main.height - 100, 'trancefusion')
@@ -57,16 +35,27 @@ export class EndScene extends Scene {
                 loop: -1
               })
           }
-          this.make.text({
-            x: this.cameras.main.width / 2,
-            y: this.cameras.main.height - 170,
-            text: 'Présenté par',
-            style: {
-              font: '16px monospace',
-              fill: '#ffffff'
-            }
-          }).setOrigin(0.5, 0.5)
-      }, this);
+        }, this);
+        
+        this.load.audio('loop2', loop2)
+        this.load.tilemapTiledJSON('level2', level2)
+        this.load.image('space', space)
+        this.loadingBar = this.add.graphics({fillStyle: {color: 0xffffff}})
+        this.load.on('progress', (percent) => {
+          this.loadingBar.fillRect(0, this.cameras.main.height / 2, this.cameras.main.width * percent, 50)
+        })
+
+    
+        this.loadingText = this.make.text({
+          x: this.cameras.main.width / 2,
+          y: this.cameras.main.height / 2 - 50,
+          text: 'Chargement...',
+          style: {
+            font: '20px monospace',
+            fill: '#ffffff'
+          }
+        })
+        this.loadingText.setOrigin(0.5, 0.5)
 
     }
 

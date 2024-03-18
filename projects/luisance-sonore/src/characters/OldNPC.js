@@ -32,7 +32,7 @@ export class OldNPC extends Base {
                 say:["L’histoire que tu t'apprêtes à vivre n'a pas de début ni de fin.",
                     "Il faudra te perdre pour atteindre le portail et retrouver la brèche.",
                     "Ne regarde pas derrière toi et avance sans peur.",
-                    "La clef de la Luisance Sonore t’attends au bout du chemin..."],
+                    "La clef de la Luisance Sonore t’attend au bout du chemin..."],
             },
             end: {
                 question: true,

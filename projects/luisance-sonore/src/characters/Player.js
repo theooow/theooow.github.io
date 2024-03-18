@@ -52,7 +52,7 @@ export class Player extends Base {
                     left: {
                         text: "Oui",
                         callback: () => {
-                            window.location.href = "https://www.shotgun.live/fr"
+                            window.location.href = "https://www.helloasso.com/associations/association-dupond/evenements/luisance-sonore-episode-iv-la-route-du-temps"
                         }
                     },
                     right: {
