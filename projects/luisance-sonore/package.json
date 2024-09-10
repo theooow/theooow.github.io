@@ -29,6 +29,7 @@
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.8.1",
     "phaser": "^3.60.0",
+    "phaser3-project-luisance": "file:",
     "webfonts-loader": "^8.0.1"
   }
 }
