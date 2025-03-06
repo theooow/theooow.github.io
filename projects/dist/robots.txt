@@ -1,4 +1,0 @@
-# Autoriser tous les robots à scanner et indexer le site.
-# Syntaxe complète : https://developers.google.com/search/docs/advanced/robots/create-robots-txt
-User-agent: *
-Allow: /
